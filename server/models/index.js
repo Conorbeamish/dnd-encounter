@@ -4,7 +4,10 @@ mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dnd-encounter", {
     keepAlive: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 })
 .then(() => console.log("connected to DB"))
 .catch(err => console.log(err));
+
+module.exports.User = require("./user");
