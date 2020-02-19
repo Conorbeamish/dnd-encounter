@@ -21,6 +21,7 @@ app.use((req, res, next) => {
     next(err);
 });
 
+//Responds to all errors
 app.use(errorHandler);
 
 app.listen(port, () => {
