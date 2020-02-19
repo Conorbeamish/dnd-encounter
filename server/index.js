@@ -5,6 +5,7 @@ const express       = require("express"),
       cors          = require("cors"),
       errorHandler  = require("./handlers/error"),
       authRoutes    = require("./routes/auth");
+      encountersRoutes    = require("./routes/encounters");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/users/:id/encounters", encountersRoutes);
 
 app.use((req, res, next) => {
     let err = new Error("Not Found")
