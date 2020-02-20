@@ -28,7 +28,7 @@ app.use(
 
 //Monsters Routes
 app.use(
-    "/api/users/:id/encounters/:encounter_id",
+    "/api/users/:id/encounters/:encounter_id/monsters",
     loginRequired,
     correctUser,
     monstersRoutes

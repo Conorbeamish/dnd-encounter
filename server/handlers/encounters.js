@@ -20,7 +20,7 @@ exports.createEncounter = async function(req, res, next){
 
 exports.getEncounter = async function(req, res, next){
     try{
-        let encounter = await db.Encounter.find(req.params.encounter_id);
+        let encounter = await db.Encounter.findById(req.params.encounter_id);
         return res.status(200).json(encounter);
     } catch (err) {
         return next(err);

@@ -6,12 +6,10 @@ const encounterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    monsters: [
-        {
+    monsters: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Monster"
-        }
-    ],
+    }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
@@ -21,7 +19,7 @@ const encounterSchema = new mongoose.Schema({
 encounterSchema.pre("remove", async function(next){
     try{
         let user = await User.findById(this.user);
-        user.encounter.remove(this.id);
+        user.encounters.remove(this.id);
         await user.save();
         return next();
     } catch(err){

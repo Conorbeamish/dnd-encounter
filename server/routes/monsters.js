@@ -2,20 +2,20 @@ const express = require("express");
 const router = express.Router({ mergeParams: true});
 
 const { 
-    createMonster
-//     getAllEncounters,
-//     getEncounter,
-//     deleteEncounter
+    createMonster,
+    getAllMonsters,
+    getMonster,
+    deleteMonster
 } = require("../handlers/monsters");
 
 router
     .route("/")
-    .post(createMonster);
-//     .get(getAllEncounters);
+    .post(createMonster)
+    .get(getAllMonsters);
 
-// router
-//     .route("/:encounter_id")
-//     .get(getEncounter)
-//     .delete(deleteEncounter);
+router
+    .route("/:monster_id")
+    .get(getMonster)
+    .delete(deleteMonster);
 
 module.exports = router;
