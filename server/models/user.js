@@ -16,6 +16,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    monsters: [
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Monster"
+        }
+    ],
     encounters:[
         {
             type: mongoose.Schema.Types.ObjectId,

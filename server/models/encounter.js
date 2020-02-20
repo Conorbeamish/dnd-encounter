@@ -6,10 +6,12 @@ const encounterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    monsters: {
+    monsters: [
+        {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Monster"
-    },
+        }
+    ],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
