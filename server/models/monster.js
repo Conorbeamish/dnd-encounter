@@ -19,8 +19,8 @@ const monsterSchema = new mongoose.Schema({
 
 monsterSchema.pre("remove", async function(next){
     try{
-        let encounter = await Encounter.findById(this.encounterId)
-        encounter.message.remove(this.id);
+        let encounter = await Encounter.findById(this.encounter)
+        encounter.monster.remove(this.id);
         await encounter.save();
         return next();
     } catch(err){

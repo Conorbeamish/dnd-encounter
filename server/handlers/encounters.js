@@ -6,18 +6,42 @@ exports.createEncounter = async function(req, res, next){
             title: req.body.title,
             user: req.params.id
         });
-        let foundUser = await db.User.findById(req.params.id)
+        let foundUser = await db.User.findById(req.params.id);
         foundUser.encounters.push(encounter.id);
         await foundUser.save();
-        let foundEncounter = db.Encounter.findById(encounter_id).populate("user", {
+        let foundEncounter = await db.Encounter.findById(encounter._id).populate("user", {
             username: true
         });
-        return(200).json(foundEncounter);
+        return res.status(200).json(foundEncounter);
     } catch (err){
         return next(err)
     }
 };
 
-exports.getEncounter = async function(req, res, next){};
+exports.getEncounter = async function(req, res, next){
+    try{
+        let encounter = await db.Encounter.find(req.params.encounter_id);
+        return res.status(200).json(encounter);
+    } catch (err) {
+        return next(err);
+    }
+};
 
-exports.deleteEncounter = async function(req, res, next){};
+exports.getAllEncounters = async function(req, res, next){
+    try{
+        let encounters = await db.Encounter.find({user: req.params.id});
+        return res.status(200).json(encounters);
+    } catch (err) {
+        return next(err);
+    }
+};
+
+exports.deleteEncounter = async function(req, res, next){
+    try{
+       let foundEncounter = await db.Encounter.findById(req.params.encounter_id);
+       await foundEncounter.remove();
+       return res.status(200).json(foundEncounter);
+    } catch (err) {
+        return next(err);
+    }
+};

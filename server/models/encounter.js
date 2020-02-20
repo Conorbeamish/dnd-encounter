@@ -18,8 +18,8 @@ const encounterSchema = new mongoose.Schema({
 
 encounterSchema.pre("remove", async function(next){
     try{
-        let user = await User.findById(this.userId)
-        user.message.remove(this.id);
+        let user = await User.findById(this.user);
+        user.encounter.remove(this.id);
         await user.save();
         return next();
     } catch(err){
