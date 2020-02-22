@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("./user");
 const Encounter = require("./encounter");
+const db = require("../models/index");
 
 const monsterSchema = new mongoose.Schema({
     info:{
@@ -19,10 +20,16 @@ const monsterSchema = new mongoose.Schema({
 
 monsterSchema.pre("remove", async function(next){
     try{
-        let encounter = await Encounter.findById(this.encounter)
-        encounter.monsters.remove(this.id);
-        await encounter.save();
-        return next();
+        let encounter = await db.Encounter.findById(this.encounter);
+        //Check to see if encounter exists
+        //Relevant when deleting whole encounter 
+        if(encounter){
+            encounter.monsters.remove(this.id);
+            await encounter.save();
+            return next();
+        } else {
+            return next();
+        }
     } catch(err){
         return next(err);
     }

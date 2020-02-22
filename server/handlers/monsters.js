@@ -7,9 +7,6 @@ exports.createMonster = async function(req, res, next){
             user: req.params.id,
             encounter: req.params.encounter_id
         });
-        let foundUser = await db.User.findById(req.params.id);
-        foundUser.monsters.push(monster.id);
-        await foundUser.save();
         let foundEncounter = await db.Encounter.findById(req.params.encounter_id);
         foundEncounter.monsters.push(monster.id);
         await foundEncounter.save();
