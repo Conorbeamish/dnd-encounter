@@ -7,12 +7,11 @@ exports.createMonster = async function(req, res, next){
             user: req.params.id,
             encounter: req.params.encounter_id
         });
+
         let foundEncounter = await db.Encounter.findById(req.params.encounter_id);
         foundEncounter.monsters.push(monster.id);
         await foundEncounter.save();
-        let foundMonster = await db.Monster.findById(monster._id).populate("user", {
-            username: true
-        })
+        let foundMonster = await db.Monster.findById(monster._id)
         .populate("encounter",{
             title: true
         });

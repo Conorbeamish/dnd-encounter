@@ -20,7 +20,9 @@ exports.createEncounter = async function(req, res, next){
 
 exports.getEncounter = async function(req, res, next){
     try{
-        let encounter = await db.Encounter.findById(req.params.encounter_id);
+        let encounter = await db.Encounter.findById(req.params.encounter_id).populate("monsters", {
+            info: true
+        })
         return res.status(200).json(encounter);
     } catch (err) {
         return next(err);
@@ -29,7 +31,10 @@ exports.getEncounter = async function(req, res, next){
 
 exports.getAllEncounters = async function(req, res, next){
     try{
-        let encounters = await db.Encounter.find({user: req.params.id});
+        let encounters = await db.Encounter.find({user: req.params.id}).populate("monsters", {
+            info: true
+        })
+        .sort({createdAt: "desc"})
         return res.status(200).json(encounters);
     } catch (err) {
         return next(err);
