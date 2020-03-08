@@ -13,8 +13,16 @@ class AuthForm extends Component {
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        const authType = this.props.signup ? "signup" : "signin";
+        this.props.onAuth(authType, this.state).then(() => {
+            console.log("logged in")
+        });
+    };
 
     render() {
         const { email, username, password} = this.state;
@@ -43,16 +51,18 @@ class AuthForm extends Component {
                         <div>
                             <label htmlFor="username">Username:</label>
                             <input 
-                                id="username" 
+                                id="username"
                                 name="username" 
                                 onChange = {this.handleChange}
-                                value={email}
                                 type="text"
                                 autoComplete="off"
+                                value={username}
                             />
                         </div>
                     )}
-                    <button type="submit">{buttonText}</button>
+                    <button type="submit">
+                        {buttonText}
+                    </button>
                 </form>
             </div>
         )
