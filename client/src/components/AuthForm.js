@@ -26,11 +26,25 @@ class AuthForm extends Component {
 
     render() {
         const { email, username, password} = this.state;
-        const { heading, buttonText, signup} = this.props;
+        const { 
+            heading, 
+            buttonText, 
+            signup, 
+            errors, 
+            history,
+            removeError
+        } = this.props;
+
+        //Get rid of errors on page change
+        history.listen(() => {
+            removeError();
+        });
+        
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <h2>{heading}</h2>
+                    {errors.message && <div>{errors.message}</div>}
                     <label htmlFor="email">Email:</label>
                     <input 
                         id="email" 
@@ -67,7 +81,6 @@ class AuthForm extends Component {
             </div>
         )
     }
-
 }
 
 export default AuthForm;
