@@ -7,8 +7,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: grey;
+    justify-content: space-evenly;
+    background-image: url("../images/homepage.jpg");
     background-position: center center;
     background-size: cover;
+    color: #f9f9f9;
+    text-shadow: 0 0 8px #66757f;
 }
