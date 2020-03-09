@@ -7,7 +7,7 @@ import {authUser} from "../store/actions/auth";
 import {removeError} from "../store/actions/errors";
 
 const Main = props => {
-    const {authUser, errors} = props;
+    const {authUser, errors, removeError} = props;
     return(
         <div className="container">
             <Switch>
@@ -19,7 +19,7 @@ const Main = props => {
                             errors={errors}
                             onAuth={authUser}
                             buttonText="Login" 
-                            heading="Welcome Back." 
+                            heading="Welcome Back" 
                             {...props}
                         />
                     )
@@ -49,4 +49,6 @@ function mapStateToProps(state){
     };
 }
 
-export default withRouter(connect(mapStateToProps, {authUser})(Main));
+export default withRouter(
+    connect(mapStateToProps, {authUser, removeError})(Main)
+);
