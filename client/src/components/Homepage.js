@@ -4,6 +4,7 @@ import "./Homepage.css";
 import Encounters from "../containers/Encounters";
 
 const Homepage = ({currentUser}) => {
+    const encounterLink = `/users/${currentUser.user.id}/encounters`
     if(!currentUser.isAuthenticated){
         return(
             <div className="homepage">
@@ -15,7 +16,11 @@ const Homepage = ({currentUser}) => {
         )
     }
     return (
-        <Encounters currentUser={currentUser}/>
+        <div className="mainMenu">
+            <Link to={encounterLink}>
+                Encounters    
+            </Link>
+        </div>
     )
 }
 

@@ -5,6 +5,7 @@ const Encounter = ({title, date }) => (
     <div>
         <h3>{title}</h3>
         <div>{date}</div>
+        <button>View Encounter</button>
     </div>
 )
 

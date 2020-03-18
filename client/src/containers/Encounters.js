@@ -4,6 +4,7 @@ import {fetchEncounters} from "../store/actions/encounters";
 import Encounter from "../components/Encounter";
 
 class Encounters extends Component {
+    
     componentDidMount(){
         const userId = this.props.currentUser.user.id;
         this.props.fetchEncounters(userId);
@@ -27,7 +28,8 @@ class Encounters extends Component {
 
 function mapStateToProps(state) {
     return{
-        encounters: state.encounters
+        encounters: state.encounters,
+        currentUser: state.currentUser
     };
 }
 
