@@ -25,9 +25,7 @@ encounterSchema.pre("remove", async function(next){
         user.encounters.remove(this.id);
         await user.save();
         //remove monsters associated with encounter
-        console.log(this.monsters)
         this.monsters.forEach( async function(id){
-            console.log(id)
             let monster = await db.Monster.findById(id);
             await monster.remove();
         });

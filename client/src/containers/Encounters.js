@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import {fetchEncounters} from "../store/actions/encounters";
+import {fetchEncounters, removeEncounter} from "../store/actions/encounters";
 import Encounter from "../components/Encounter";
 import NewEncounter from "../containers/NewEncounter";
 import "./Encounters.css";
@@ -13,19 +13,22 @@ class Encounters extends Component {
     }
 
     render(){
-        const {encounters} = this.props
+        const {encounters, removeEncounter} = this.props
         let encounterList = encounters.map(e => (
             <Encounter
                 key={e._id}
+                id={e._id}
                 title={e.title}
                 date={e.createdAt}
+                user={e.user}
+                removeEncounter={removeEncounter.bind(this, e.user, e._id)}
             />
         ));
         return (
             <div className="encounters">
                 <NewEncounter 
                     history={this.props.history}
-                    removeError={this.props.removeError}/>
+                />
                 {encounterList}
             </div>
         )
@@ -39,4 +42,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchEncounters})(Encounters);
+export default connect(mapStateToProps, { fetchEncounters, removeEncounter})(Encounters);

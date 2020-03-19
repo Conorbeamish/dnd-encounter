@@ -6,6 +6,7 @@ import AuthForm from "../components/AuthForm";
 import {authUser} from "../store/actions/auth";
 import {removeError} from "../store/actions/errors";
 import Encounters from "./Encounters";
+import Monsters from "./Monsters";
 import withAuth from "../hocs/withAuth";
 
 const Main = props => {
@@ -40,8 +41,12 @@ const Main = props => {
                     )
                 }}/>
                 <Route 
-                    path="/users/:id/encounters" 
+                    exact path="/users/:id/encounters" 
                     component={withAuth(Encounters)}
+                />
+                <Route 
+                    exact path="/users/:id/encounters/:encounter_id/monsters"
+                    component={withAuth(Monsters)}
                 />
             </Switch>
         </div>
