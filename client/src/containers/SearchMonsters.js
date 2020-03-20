@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
-import { saveMonster } from "../store/actions/monsters";
+import { saveMonster, remove } from "../store/actions/monsters";
 import Monster from "../components/Monster";
 
 class SearchMonsters extends Component {
@@ -25,12 +25,13 @@ class SearchMonsters extends Component {
 
     render(){
 
-        const {saveMonster, userID, encounterID} = this.props;
+        const {saveMonster, userID, encounterID, removeError, searchMonsters} = this.props;
         
-        let searchMonstersList = this.props.searchMonsters.map( i => i.map(m => (
+        let searchMonstersList = searchMonsters.map( i => i.map(m => (
             <Monster 
                 key={m.name}
                 info={m}
+                removeError={removeError}
                 saveMonster = {saveMonster.bind(this, userID, encounterID, {"info": m})}
 
             />
@@ -56,6 +57,9 @@ class SearchMonsters extends Component {
                         Search
                     </button>
                 </form>
+                {searchMonsters[0] == ""  && (
+                    <div>No results</div>
+                )}
                 {searchMonstersList}
             </div>
         )

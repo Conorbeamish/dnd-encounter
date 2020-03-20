@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import {fetchMonsters, removeMonster} from "../store/actions/monsters";
+import { removeError } from "../store/actions/errors";
 import Monster from "../components/Monster";
 import SearchMonsters from "./SearchMonsters.js";
 
@@ -12,7 +13,6 @@ class Monsters extends Component {
         this.props.fetchMonsters(userID, encounterID);
     }
 
-
     render(){
         const {monsters, removeMonster} = this.props;
         
@@ -20,8 +20,6 @@ class Monsters extends Component {
             <div key={m._id}>
                 <Monster
                     info={m.info[0]}
-                    user={m.user}
-                    encounter={m.encounter}
                     id={m._id}
                     removeMonster={removeMonster.bind(this, m.user, m.encounter, m._id)}
                 />
@@ -35,6 +33,7 @@ class Monsters extends Component {
                 <SearchMonsters
                     userID = {this.props.match.params.id}
                     encounterID = {this.props.match.params.encounter_id}
+                    removeError = {this.props.removeError}
                 />
             </div>
         )
@@ -47,4 +46,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchMonsters, removeMonster})(Monsters);
+export default connect(mapStateToProps, { fetchMonsters, removeMonster, removeError})(Monsters);

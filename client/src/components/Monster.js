@@ -1,7 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const Monster = ({ info, removeMonster, saveMonster }) => { 
+const Monster = ({ info, removeMonster, saveMonster, removeError }) => { 
+
+    const handleSave = () => {
+        saveMonster()
+        removeError()
+    }
 
     return(
         <div>
@@ -13,7 +18,7 @@ const Monster = ({ info, removeMonster, saveMonster }) => {
                 )
             }
             {saveMonster && (
-                <button onClick={saveMonster}>
+                <button onClick={handleSave}>
                     Save
                 </button>
                 )
