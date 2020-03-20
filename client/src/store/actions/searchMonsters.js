@@ -11,7 +11,7 @@ export function fetchSearchMonsters(search){
     return dispatch => {
         return apiCall("get", `https://api.open5e.com/monsters/?search=${search}`)
         .then((res) => {
-            dispatch(loadSearchMonsters(res));
+            dispatch(loadSearchMonsters(res.results));
         })
         .catch(err => {
             dispatch(addError(err.message));

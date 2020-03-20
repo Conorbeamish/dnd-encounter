@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
+import { saveMonster } from "../store/actions/monsters";
 import Monster from "../components/Monster";
 
 class SearchMonsters extends Component {
@@ -23,13 +24,17 @@ class SearchMonsters extends Component {
     }
 
     render(){
+
+        const {saveMonster, userID, encounterID} = this.props;
         
-        let searchMonstersList = this.props.searchMonsters.results.map(m => (
+        let searchMonstersList = this.props.searchMonsters.map( i => i.map(m => (
             <Monster 
-                key={m._id}
-                info={m.name}
+                key={m.name}
+                info={m}
+                saveMonster = {saveMonster.bind(this, userID, encounterID, {"info": m})}
+
             />
-        ))
+        )))
 
         return(
             <div>
@@ -64,4 +69,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchSearchMonsters})(SearchMonsters);
+export default connect(mapStateToProps, { fetchSearchMonsters, saveMonster})(SearchMonsters);

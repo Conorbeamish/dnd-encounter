@@ -31,3 +31,11 @@ export function fetchMonsters(userID, encounterID){
         });
     }
 }
+
+export function saveMonster(userID, encounterID, data){
+    return dispatch => {
+        return apiCall("post", `/api/users/${userID}/encounters/${encounterID}/monsters`, data)
+        .then(res => {})
+        .catch(err => dispatch(addError(err.message)));
+    }
+}

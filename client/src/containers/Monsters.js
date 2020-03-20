@@ -19,7 +19,7 @@ class Monsters extends Component {
         let monsterList = monsters.map(m => (
             <div key={m._id}>
                 <Monster
-                    info={m.info}
+                    info={m.info[0]}
                     user={m.user}
                     encounter={m.encounter}
                     id={m._id}
@@ -27,11 +27,15 @@ class Monsters extends Component {
                 />
             </div>
         ));
+        
         return(
             <div>
                 <h1>Monsters</h1>
                 {monsterList}
-                <SearchMonsters/>
+                <SearchMonsters
+                    userID = {this.props.match.params.id}
+                    encounterID = {this.props.match.params.encounter_id}
+                />
             </div>
         )
     }
