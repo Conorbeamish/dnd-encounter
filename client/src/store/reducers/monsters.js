@@ -5,7 +5,7 @@ const monsters = (state = [], action) => {
         case LOAD_MONSTERS:
             return [...action.monsters];
         case REMOVE_MONSTER:
-            return state.filter(monster => monster._id !== action._id);
+            return state.filter(monster => monster._id !== action.id);
         default:
             return state;
     }

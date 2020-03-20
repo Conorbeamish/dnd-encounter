@@ -7,6 +7,19 @@ export const loadMonsters = monsters => ({
     monsters
 });
 
+export const remove = id => ({
+    type: REMOVE_MONSTER,
+    id
+});
+
+export const removeMonster = (userID, encounterID, monsterID) => {
+    return dispatch => {
+        return apiCall("delete", `/api/users/${userID}/encounters/${encounterID}/monsters/${monsterID}`)
+        .then(() => dispatch(remove(monsterID)))
+        .catch((err) => addError(err.message));
+    }
+} 
+
 export function fetchMonsters(userID, encounterID){
     return dispatch => {
         return apiCall("get", `/api/users/${userID}/encounters/${encounterID}/monsters/`)

@@ -5,7 +5,7 @@ const encounters = (state = [], action) => {
         case LOAD_ENCOUNTERS:
             return [...action.encounters];
         case REMOVE_ENCOUNTER:
-            return state.filter(encounter => encounter._id !== action._id);
+            return state.filter(encounter => encounter._id !== action.id);
         default:
             return state;
     }
