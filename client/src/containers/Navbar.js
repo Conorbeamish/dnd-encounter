@@ -19,21 +19,26 @@ class Navbar extends Component{
                     Home
                     </Link>
                 </div>
+                <div className="brand-logo nav-item">
+                    D&D Encounter
+                </div>
                 {this.props.currentUser.isAuthenticated ? (
                     <ul className="nav-item" style={{margin: 0}}>
-                        <li>
-                            <button onClick={this.logout}>Log Out</button>
+                        <li className="nav-user">
+                            {this.props.currentUser.user.username}
                         </li>
                         <li>
-                            {this.props.currentUser.user.username}
+                            <span> | </span>
+                            <button className="nav-btn" onClick={this.logout}>Log Out</button>
                         </li>
                     </ul>
                 ) : (
                     <ul className="nav-item" style={{margin: 0}}>
                         <li>
-                            <Link to="/signup">Sign up</Link>
+                            <Link to="/signup">Sign Up</Link>
                         </li>
                         <li>
+                            <span> | </span>
                             <Link to="/signin">Sign In</Link>
                         </li>
                     </ul>

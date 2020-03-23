@@ -4,10 +4,79 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     z-index: 1;
+    border-bottom: 2px solid #e40611;
+    background-color: #313639;
+    color: #fefefe;
 }
 
 .nav-item{
     padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
 }
+
+.brand-logo {
+    font-size: 1.5rem;
+    color:#e40611;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+        1px 1px 0 #000;
+    padding: 0;
+
+}
+
+.navbar li {
+margin-right: 0.5rem;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar a:visited {
+    color: #fefefe;
+}
+
+.navbar a:focus{
+    color: #e40611; 
+}
+
+.navbar a:hover{
+    color: #e40611; 
+}
+
+.navbar button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    color: #fefefe;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+}
+
+.navbar button:hover{
+    color: #e40611; 
+}
+
+.nav-user{
+    color: red;
+    text-transform: capitalize;
+}
+
+@media only screen and (max-width: 600px) {
+    .brand-logo {
+        display: none;
+    }
+  }

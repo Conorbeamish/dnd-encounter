@@ -16,7 +16,7 @@ const Homepage = ({currentUser}) => {
         )
     }
     return (
-        <div className="mainMenu">
+        <div className="homepage">
             <Link to={encounterLink}>
                 Encounters    
             </Link>

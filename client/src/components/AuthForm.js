@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./AuthForm.css";
 
 class AuthForm extends Component {
     constructor(props){
@@ -43,12 +44,12 @@ class AuthForm extends Component {
         });
         
         return(
-            <div>
+            <div className="auth-form">
                 <form onSubmit={this.handleSubmit}>
-                    <h2>{heading}</h2>
-                    {errors.message && <div>{errors.message}</div>}
+                    <h3>{heading}</h3>
+                    {errors.message && <div className="auth-err">{errors.message}</div>}
                     <label htmlFor="email">Email:</label>
-                    <input 
+                    <input
                         id="email" 
                         name="email" 
                         onChange = {this.handleChange}
@@ -65,7 +66,7 @@ class AuthForm extends Component {
                     />
                     {signup && (
                         <div>
-                            <label htmlFor="username">Username:</label>
+                            <label htmlFor="username">Choose a Username:</label>
                             <input 
                                 id="username"
                                 name="username" 
@@ -74,9 +75,12 @@ class AuthForm extends Component {
                                 autoComplete="off"
                                 value={username}
                             />
+                            <div className="auth-text">
+                                Your email is used to register your account and will not be used for marketing purposes
+                            </div>
                         </div>
                     )}
-                    <button type="submit">
+                    <button className="auth-form-btn" type="submit">
                         {buttonText}
                     </button>
                 </form>
