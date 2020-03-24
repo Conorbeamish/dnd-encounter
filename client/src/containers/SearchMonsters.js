@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
 import { saveMonster, remove } from "../store/actions/monsters";
 import Monster from "../components/Monster";
+import "./SearchMonsters.css";
 
 class SearchMonsters extends Component {
     constructor(props) {

@@ -4,6 +4,7 @@ import {fetchMonsters, removeMonster} from "../store/actions/monsters";
 import { removeError } from "../store/actions/errors";
 import Monster from "../components/Monster";
 import SearchMonsters from "./SearchMonsters.js";
+import "./Monsters.css";
 
 class Monsters extends Component {
 

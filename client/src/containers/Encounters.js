@@ -26,10 +26,15 @@ class Encounters extends Component {
         ));
         return (
             <div className="encounters">
-                <NewEncounter 
-                    history={this.props.history}
-                />
-                {encounterList}
+                <div className="encounters-container">
+                    <h3>
+                        My Encounters
+                    </h3>
+                    <NewEncounter className="new-encounter"
+                        history={this.props.history}
+                    />
+                    {encounterList}
+                </div>
             </div>
         )
     }

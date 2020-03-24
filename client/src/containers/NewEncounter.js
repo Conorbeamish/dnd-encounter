@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {postEncounter} from "../store/actions/encounters";
-import {removeError} from "../store/actions/errors"
+import {removeError} from "../store/actions/errors";
+import "./NewEncounter.css"
 
 
 class NewEncounter extends Component {
@@ -35,21 +36,24 @@ class NewEncounter extends Component {
         });
 
         return(
-            <form onSubmit={this.handleNewEncounter}>
-                {this.props.errors.message && (
-                    <div>
-                        {this.props.errors.message}
-                    </div>
-                )}
-                <input 
-                    type="text" 
-                    value={this.state.title}
-                    onChange= {this.handleChange}
-                />
-                <button type="submit">
-                    New Encounter
-                </button>
-            </form>
+            <div className="new-encounter">
+                <form onSubmit={this.handleNewEncounter}>
+                    {this.props.errors.message && (
+                        <div>
+                            {this.props.errors.message}
+                        </div>
+                    )}
+                    <input 
+                        type="text" 
+                        value={this.state.title}
+                        onChange= {this.handleChange}
+                        placeholder="Start a new encounter"
+                    />
+                    <button type="submit">
+                        Create
+                    </button>
+                </form>
+            </div>
         )
     }
 }

@@ -54,7 +54,7 @@ class AuthForm extends Component {
                         name="email" 
                         onChange = {this.handleChange}
                         value={email}
-                        type="text"
+                        type="email"
                         autoComplete="off"
                     />
                     <label htmlFor="password">Password:</label>

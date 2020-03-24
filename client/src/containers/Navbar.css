@@ -70,8 +70,12 @@ margin-right: 0.5rem;
     color: #e40611; 
 }
 
+.navbar button:focus{
+    color: #e40611;
+}
+
 .nav-user{
-    color: red;
+    color: #e40611;
     text-transform: capitalize;
 }
 

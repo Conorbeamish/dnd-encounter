@@ -1,0 +1,49 @@
+.new-encounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.new-encounter form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-encounter input{
+    border-radius: 0.25rem;
+    border: none;
+    padding: 0.1rem;
+    height: 1.5rem;
+    background-color: #fefefe;
+    border: 1px solid #fefefe;
+}
+
+.new-encounter input:hover{
+    outline: none;
+    border: 1px solid rgba(49, 54, 57, 0.75);
+}
+
+.new-encounter button{
+    cursor: pointer;
+    border: solid 1px #313639;
+    border-radius: 0.25rem;
+    background: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: #313639;
+    transition: 300ms;
+    padding: 0.25rem;
+    margin-left: 1rem;
+}
+
+.new-encounter button:hover{
+    background-color: #313639;
+    color: #fefefe;
+}
+
+.new-encounter button:focus{
+    background-color: #313639;
+    color: #fefefe;
+}
