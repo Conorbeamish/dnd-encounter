@@ -39,8 +39,8 @@ class SearchMonsters extends Component {
         )))
 
         return(
-            <div>
-                <h3>
+            <div className="search-monsters">
+                <h3 className="search-monsters-title">
                     Search Monsters
                 </h3>
                 {this.props.errors.message && (
@@ -54,14 +54,14 @@ class SearchMonsters extends Component {
                         value={this.state.search}
                         onChange= {this.handleChange}
                     />
-                    <button type="submit">
+                    <button className="search-monsters-btn" type="submit">
                         Search
                     </button>
                 </form>
                 {searchMonsters[0] == ""  && (
                     <div>No results</div>
                 )}
-                {searchMonstersList}
+                <div className="monster-list">{searchMonstersList} </div>
             </div>
         )
     }

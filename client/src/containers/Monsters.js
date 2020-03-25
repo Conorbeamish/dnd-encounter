@@ -18,20 +18,20 @@ class Monsters extends Component {
         const {monsters, removeMonster} = this.props;
         
         let monsterList = monsters.map(m => (
-            <div key={m._id}>
-                <Monster
-                    info={m.info[0]}
-                    id={m._id}
-                    removeMonster={removeMonster.bind(this, m.user, m.encounter, m._id)}
-                />
-            </div>
+            <Monster
+                key={m._id}
+                info={m.info[0]}
+                id={m._id}
+                removeMonster={removeMonster.bind(this, m.user, m.encounter, m._id)}
+            />
         ));
         
         return(
-            <div>
-                <h1>Monsters</h1>
-                {monsterList}
-                <SearchMonsters
+            <div className="monsters">
+                <h3>Monsters</h3>
+                <div className="monster-list">{monsterList}</div>
+                {monsters.length === 0 && (<div>You have no monsters saved, try searching for some below...</div>)}
+                <SearchMonsters 
                     userID = {this.props.match.params.id}
                     encounterID = {this.props.match.params.encounter_id}
                     removeError = {this.props.removeError}
@@ -44,6 +44,7 @@ class Monsters extends Component {
 function mapStateToProps(state) {
     return{
         monsters: state.monsters,
+        
     };
 }
 

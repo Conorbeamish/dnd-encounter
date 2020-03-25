@@ -39,19 +39,21 @@ class NewEncounter extends Component {
             <div className="new-encounter">
                 <form onSubmit={this.handleNewEncounter}>
                     {this.props.errors.message && (
-                        <div>
+                        <div className="encounter-err">
                             {this.props.errors.message}
                         </div>
                     )}
-                    <input 
-                        type="text" 
-                        value={this.state.title}
-                        onChange= {this.handleChange}
-                        placeholder="Start a new encounter"
-                    />
-                    <button type="submit">
-                        Create
-                    </button>
+                    <div>
+                        <input 
+                            type="text" 
+                            value={this.state.title}
+                            onChange= {this.handleChange}
+                            placeholder="Start a new encounter"
+                        />
+                        <button type="submit">
+                            Create
+                        </button>
+                    </div>
                 </form>
             </div>
         )

@@ -1,9 +1,12 @@
 .monster {
     border: 1px solid #313639;
     border-radius: 0.25rem;
-    justify-items: start;
     text-align: left;
-
+    width: 27%;
+    margin: 1%;
+    padding: 2%;
+    background-color: #fefefe;
+    margin-bottom: auto;
 }
 
 .monster ul{
@@ -12,6 +15,7 @@
 
 .monster h3{
     border-bottom: 2px solid #e40611;
+    margin: 0 0 1rem 0;
 }
 
 .monster li {
@@ -20,11 +24,23 @@
 
 .monster-stats{ 
     display: flex;
+    flex-wrap: wrap;
 } 
 
 .monster-stats li{
-    padding-right: 1rem;;
+    padding-right: 1rem;
 }
+
+.monster-saving{
+    border-bottom: 2px solid #e40611;
+    border-top:2px solid #e40611;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.monster-skill{
+    margin: 0.5rem 0 0.5rem 0;
+}
+
 
 .monster button{
  font-family: inherit;
@@ -34,17 +50,17 @@
  border-radius: 0.25rem;
 }
 
-.monster-btn-save{
+.monster-btn{
     border: 1px solid #313639;
 }
 
-.monster-btn-save:hover{
+.monster-btn:hover{
     background: #313639;
     color: #fefefe;
     transition: 300ms;
 }
 
-.monster-btn-save:focus{
+.monster-btn:focus{
     background: #313639;
     color: #fefefe;
 }
@@ -62,3 +78,15 @@
     background: #e40611;
     color: #fefefe;
 }
+
+.monster-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+    .monster{
+        width: 90%;
+        margin: 2%;
+    }
+  } 

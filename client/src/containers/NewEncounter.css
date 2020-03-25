@@ -9,6 +9,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.new-encounter form div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .new-encounter input{
@@ -46,4 +53,11 @@
 .new-encounter button:focus{
     background-color: #313639;
     color: #fefefe;
+}
+
+.encounter-err {
+    color: #e40611;
+    letter-spacing: normal;
+    font-size: .8rem;
+    margin-bottom: 0.5rem;
 }

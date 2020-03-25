@@ -1,0 +1,10 @@
+.monsters{
+    background-color: #ebd5b3;
+    padding-top: 10vh;
+}
+
+.monster-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}

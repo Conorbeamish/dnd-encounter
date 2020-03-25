@@ -28,10 +28,12 @@ const Monster = ({ info, removeMonster, saveMonster, removeError }) => {
 
     const getSkills = () => {
         const skills = []
-        for(let [skill, stat] of Object.entries(info.skills)){
-            skills.push(<span>{skill} {stat}, </span>)
-        }   
-        return skills
+        if(info.skills){
+            for(let [skill, stat] of Object.entries(info.skills)){
+                skills.push(<span>{skill} {stat}, </span>)
+            }   
+            return skills
+        }
     } 
 
     return(
@@ -48,13 +50,14 @@ const Monster = ({ info, removeMonster, saveMonster, removeError }) => {
                 <li>Wis: {info.wisdom} </li>
                 <li>Cha: {info.charisma} </li>
             </ul>
-            <div>Saving Throws: Str({info.strength_save}) Dex({info.dexterity_save}) Con({info.constitution_save}) Int({info.intelligence_save}) Cha({info.charisma_save}) Wis({info.wisdom_save})</div>
-            <div>Skills: {getSkills()}</div>
+            <div className="monster-saving">Saving Throws: Str({info.strength_save}) Dex({info.dexterity_save}) Con({info.constitution_save}) Int({info.intelligence_save}) Cha({info.charisma_save}) Wis({info.wisdom_save})</div>
+            <div className="monster-skill">Skills: {getSkills()}</div>
         
-            {removeMonster && (<div>
+            {removeMonster && (<div className="monster-buttons">
                 
-                <h5>Attacks</h5>
-                {actionList}
+                    <button className="monster-btn">
+                        View
+                    </button>
                     <button className="monster-btn-delete" onClick={removeMonster}>
                         Delete
                     </button>
@@ -63,7 +66,7 @@ const Monster = ({ info, removeMonster, saveMonster, removeError }) => {
             }
             
             {saveMonster && (
-                <button className="monster-btn-save" onClick={handleSave}>
+                <button className="monster-btn" onClick={handleSave}>
                     Save
                 </button>
                 )
