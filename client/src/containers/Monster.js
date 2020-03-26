@@ -101,7 +101,7 @@ import "./Monster.css";
                         <div>{this.actionList()}</div>
                         <h3 className="monster-actions-title">Special Abilities</h3>
                         {getAbilities(info.special_abilities)}
-                        {info.legendary_actions !==0 && (
+                        {info.legendary_actions.length !==0 && (
                             <div>
                                 <h3 className="monster-actions-title">Legendary Actions</h3>
                                 {info.legendary_desc}
