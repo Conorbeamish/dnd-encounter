@@ -17,6 +17,13 @@ class AuthForm extends Component {
         });
     };
 
+    handleEmail = e => {
+        this.setState({
+            [e.target.name]: e.target.value.toLowerCase()
+        });
+    }
+
+
     handleSubmit = e => {
         e.preventDefault();
         const authType = this.props.signup ? "signup" : "signin";
@@ -28,7 +35,7 @@ class AuthForm extends Component {
     };
 
     render() {
-        const { email, username, password} = this.state;
+        const { email, username} = this.state;
         const { 
             heading, 
             buttonText, 
@@ -52,7 +59,7 @@ class AuthForm extends Component {
                     <input
                         id="email" 
                         name="email" 
-                        onChange = {this.handleChange}
+                        onChange = {this.handleEmail}
                         value={email}
                         type="email"
                         autoComplete="off"
