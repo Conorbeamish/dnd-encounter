@@ -1,5 +1,5 @@
 .search-monsters{
-    min-height: 80vh;
+    min-height: 30vh;
     background-color: rgba(49, 54, 57, 0.25);
 }
 
@@ -53,4 +53,8 @@
 .search-monsters-btn:focus{
     background-color: #313639;
     color: #fefefe;
+}
+
+.monster-no-result{
+    margin-top: 1rem;
 }

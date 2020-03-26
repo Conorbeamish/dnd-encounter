@@ -33,6 +33,7 @@ class Encounters extends Component {
                     <NewEncounter className="new-encounter"
                         history={this.props.history}
                     />
+                    {encounterList.length === 0 && (<div>You have no encounters, enter a name for a new encounter above</div>)}
                     {encounterList}
                 </div>
             </div>

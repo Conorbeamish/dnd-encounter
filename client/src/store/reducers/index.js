@@ -4,13 +4,15 @@ import errors from "./errors";
 import encounters from "./encounters";
 import monsters from "./monsters";
 import searchMonsters from "./searchMonsters";
+import currentEncounter from "./currentEncounter";
 
 const rootReducer = combineReducers({
     currentUser,
     errors,
     encounters,
     monsters,
-    searchMonsters
+    searchMonsters,
+    currentEncounter
 });
 
 export default rootReducer;

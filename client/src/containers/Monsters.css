@@ -8,3 +8,7 @@
     flex-wrap: wrap;
     width: 100%;
 }
+
+.no-monsters-msg{
+    margin-bottom: 50vh;
+}

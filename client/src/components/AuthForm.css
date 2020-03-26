@@ -31,7 +31,7 @@
     width: 100%;
     margin-bottom: 1rem;
     border-radius: 0.25rem;
-    border: none;
+    border: 1px solid white;
     height: 1.5rem;
     -moz-box-shadow:    3px 3px 5px 6px #ccc;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;

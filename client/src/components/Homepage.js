@@ -9,17 +9,25 @@ const Homepage = ({currentUser}) => {
         return(
             <div className="homepage">
                 <h1>DnD Encounter</h1>
-                <Link to="/signup">
-                    Sign up Here
-                </Link>
+                <div className="homepage-links">
+                    <Link to="/signup">
+                        Sign up
+                    </Link>
+                    <Link to="/signin">
+                        Sign In
+                    </Link>
+                </div>
             </div>
         )
     }
     return (
         <div className="homepage">
-            <Link to={encounterLink}>
-                Encounters    
-            </Link>
+            <h1>DnD Encounter</h1>
+            <div>
+                <Link to={encounterLink}>
+                    Encounters    
+                </Link>
+            </div>
         </div>
     )
 }
