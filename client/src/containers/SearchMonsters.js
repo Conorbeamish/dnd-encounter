@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
-import { saveMonster, remove } from "../store/actions/monsters";
+import { saveMonster} from "../store/actions/monsters";
 import Monster from "./Monster";
 import "./SearchMonsters.css";
 

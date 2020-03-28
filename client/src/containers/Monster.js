@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
 import "./Monster.css";
 
  class Monster extends Component { 
@@ -21,10 +20,15 @@ import "./Monster.css";
 
     getMovement = () => {
         const movement = []
-        for(let [type, dist] of Object.entries(this.props.info.speed)){
+        const {info} = this.props
+        for(let [type, dist] of Object.entries(info.speed)){
             movement.push(<span key={type}>{type} - {dist} </span>)
         }   
         return movement
+    } 
+
+    abilityModifier = (stat) => {
+        return Math.floor((stat - 10) / 2)
     } 
 
     getSkills = () => {
@@ -32,7 +36,7 @@ import "./Monster.css";
         const {info} = this.props
         if(info.skills){
             for(let [skill, stat] of Object.entries(info.skills)){
-                skills.push(<span key={skill}>{skill} {stat}, </span>)
+                skills.push(<span key={skill}>{skill} +{stat}</span>)
             }   
             return skills
         }
@@ -66,8 +70,7 @@ import "./Monster.css";
 
     render(){
         const {info, saveMonster, removeMonster} = this.props
-        const getAbilities = this.getAbilities
-
+    
         return(
             <div className="monster">
                 <div className="monster-title">
@@ -78,12 +81,12 @@ import "./Monster.css";
                 <div>Hit dice:  ({info.hit_dice})</div>
                 <div>Speed: {this.getMovement()}</div>
                 <ul className="monster-stats">
-                    <li>Str: {info.strength} </li>
-                    <li>Dex: {info.dexterity} </li>
-                    <li>Con: {info.constitution} </li>
-                    <li>Int: {info.intelligence} </li>
-                    <li>Wis: {info.wisdom} </li>
-                    <li>Cha: {info.charisma} </li>
+                    <li>Str: {info.strength}  ({this.abilityModifier(info.strength)})  </li>
+                    <li>Dex: {info.dexterity}  ({this.abilityModifier(info.dexterity)}) </li>
+                    <li>Con: {info.constitution}  ({this.abilityModifier(info.constitution)})  </li>
+                    <li>Int: {info.intelligence}  ({this.abilityModifier(info.intelligence)}) </li>
+                    <li>Wis: {info.wisdom}  ({this.abilityModifier(info.wisdom)}) </li>
+                    <li>Cha: {info.charisma}  ({this.abilityModifier(info.charisma)}) </li>
                 </ul>
 
                 {/* Full descitption */}
@@ -97,15 +100,17 @@ import "./Monster.css";
                         {info.condition_immunities.length !==0 &&  (<div>Condition Immunities: {info.condition_immunities}</div>)}
                         <div>Senses: {info.senses}</div>
                         <div>Languages: <em>{info.languages}</em></div>
+
                         <h3 className="monster-actions-title">Actions</h3>
                         <div>{this.actionList()}</div>
+
                         <h3 className="monster-actions-title">Special Abilities</h3>
-                        {getAbilities(info.special_abilities)}
+                        {this.getAbilities(info.special_abilities)}
                         {info.legendary_actions.length !==0 && (
                             <div>
                                 <h3 className="monster-actions-title">Legendary Actions</h3>
                                 {info.legendary_desc}
-                                {getAbilities(info.legendary_actions)}
+                                {this.getAbilities(info.legendary_actions)}
                             </div>
                         )}
                     </div>

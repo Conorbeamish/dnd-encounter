@@ -33,11 +33,7 @@
     color: #fefefe;
 }
 
-.hompage a:focus{
+.homepage a:focus{
     background-color: #313639;
     color: #fefefe;
-}
-
-.homepage-links{
-
 }

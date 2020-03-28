@@ -44,6 +44,10 @@
     margin: 0.5rem 0 0.5rem 0;
 }
 
+.monster-skill span{
+    margin-right: 0.5rem;
+}
+
 .monster-actions-title{
     border-bottom: 2px solid #e40611;
 }

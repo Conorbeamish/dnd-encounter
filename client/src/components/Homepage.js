@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
-import Encounters from "../containers/Encounters";
 
 const Homepage = ({currentUser}) => {
     const encounterLink = `/users/${currentUser.user.id}/encounters`
