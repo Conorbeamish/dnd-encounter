@@ -3,14 +3,14 @@ import {Switch, Route, withRouter} from "react-router-dom";
 import {connect } from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
-import {authUser} from "../store/actions/auth";
+import {authUser, resetPassword, newPassword} from "../store/actions/auth";
 import {removeError} from "../store/actions/errors";
 import Encounters from "./Encounters";
 import Monsters from "./Monsters";
 import withAuth from "../hocs/withAuth";
 
 const Main = props => {
-    const {authUser, errors, removeError, currentUser} = props;
+    const {authUser, errors, removeError, currentUser, resetPassword, newPassword} = props;
     return(
         <div className="container">
             <Switch>
@@ -20,6 +20,7 @@ const Main = props => {
                         <AuthForm 
                             removeError={removeError}
                             errors={errors}
+                            signin
                             onAuth={authUser}
                             buttonText="Login" 
                             heading="Welcome Back" 
@@ -40,6 +41,39 @@ const Main = props => {
                         />
                     )
                 }}/>
+                <Route exact path="/reset" render={props => {
+                    return(
+                        <AuthForm 
+                            removeError={removeError}
+                            errors={errors}
+                            onAuth={authUser}   
+                            reset
+                            resetPassword={resetPassword}
+                            newPassword={newPassword}
+                            buttonText="Reset" 
+                            heading="Reset Password" 
+                            {...props}
+                        />
+                    )
+                }}/>
+
+                <Route exact path="/reset/:userID/:token" render={props => {
+                    return(
+                        <AuthForm 
+                            removeError={removeError}
+                            errors={errors}
+                            onAuth={authUser}   
+                            change
+                            reset
+                            resetPassword={resetPassword}
+                            newPassword={newPassword}
+                            buttonText="Change" 
+                            heading="Change Password" 
+                            {...props}
+                        />
+                    )
+                }}/>
+
                 <Route 
                     exact path="/users/:id/encounters" 
                     component={withAuth(Encounters)}
@@ -61,5 +95,5 @@ function mapStateToProps(state){
 }
 
 export default withRouter(
-    connect(mapStateToProps, {authUser, removeError})(Main)
+    connect(mapStateToProps, {authUser, removeError, newPassword, resetPassword})(Main)
 );

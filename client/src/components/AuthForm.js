@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AuthForm.css";
+import { Link } from "react-router-dom";
 
 class AuthForm extends Component {
     constructor(props){
@@ -23,6 +24,24 @@ class AuthForm extends Component {
         });
     }
 
+    handleReset = e => {
+        const {userID, token} = this.props.match.params
+        e.preventDefault();
+        //check if request is for reset or change
+        if(this.props.change){
+            this.props.newPassword(userID, token, this.state).then(() => {
+                this.props.history.push("/signin")
+            }).catch(() => {
+                return;
+            })
+        } else {
+            this.props.resetPassword(this.state.email).then(() => {
+                this.props.history.push("/")
+            }).catch(() => {
+                return;
+            })
+        }
+    }
 
     handleSubmit = e => {
         e.preventDefault();
@@ -40,6 +59,9 @@ class AuthForm extends Component {
             heading, 
             buttonText, 
             signup, 
+            signin,
+            reset,
+            change,
             errors, 
             history,
             removeError
@@ -52,27 +74,52 @@ class AuthForm extends Component {
         
         return(
             <div className="auth-form">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={reset ? this.handleReset :this.handleSubmit}>
                     <h3>{heading}</h3>
                     {errors.message && <div className="auth-err">{errors.message}</div>}
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        id="email" 
-                        name="email" 
-                        onChange = {this.handleEmail}
-                        value={email}
-                        type="email"
-                        autoComplete="off"
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input  
-                        id="password" 
-                        name="password" 
-                        onChange = {this.handleChange}
-                        type="password"
-                    />
+                
+                    {signin && (
+                        <div>
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                id="email" 
+                                name="email" 
+                                onChange = {this.handleEmail}
+                                value={email}
+                                type="email"
+                                autoComplete="off"
+                            />
+                            <label htmlFor="password">Password:</label>
+                            <input  
+                                id="password" 
+                                name="password" 
+                                onChange = {this.handleChange}
+                                type="password"
+                            /> 
+                            <Link to="/reset">
+                                Reset Password
+                            </Link>
+                        </div>
+                    )}
+                    
                     {signup && (
                         <div>
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                id="email" 
+                                name="email" 
+                                onChange = {this.handleEmail}
+                                value={email}
+                                type="email"
+                                autoComplete="off"
+                            />
+                            <label htmlFor="password">Password:</label>
+                            <input  
+                                id="password" 
+                                name="password" 
+                                onChange = {this.handleChange}
+                                type="password"
+                            /> 
                             <label htmlFor="username">Choose a Username:</label>
                             <input 
                                 id="username"
@@ -87,6 +134,34 @@ class AuthForm extends Component {
                             </div>
                         </div>
                     )}
+
+                    {(reset && !change) && ( 
+                        <div>
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                id="email" 
+                                name="email" 
+                                onChange = {this.handleEmail}
+                                value={email}
+                                type="email"
+                                autoComplete="off"
+                            />
+                            <div className="auth-text">We will email you a link to change or reset your password</div>
+                        </div>
+                    )}
+
+                    {(reset && change) && (
+                        <div>
+                            <label htmlFor="password">Password:</label>
+                            <input  
+                                id="password" 
+                                name="password" 
+                                onChange = {this.handleChange}
+                                type="password"
+                             /> 
+                         </div>
+                    )}
+                    
                     <button className="auth-form-btn" type="submit">
                         {buttonText}
                     </button>
