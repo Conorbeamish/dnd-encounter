@@ -10,7 +10,7 @@ exports.transporter = nodemailer.createTransport({
 })
 
 exports.resetPasswordURL = (user, token) => {
-    return `http://localhost:3000/reset/${user._id}/${token}`
+    return `https://cb-dndencounter-client.herokuapp.com/reset/${user._id}/${token}`
 }
 
 exports.resetPasswordTemplate = (user, url) => {
