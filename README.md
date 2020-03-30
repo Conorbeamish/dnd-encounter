@@ -11,13 +11,16 @@ This is designed to aid in providing information to the user when they are playi
 An API request is made to https://www.dnd5eapi.co/api/monsters/ to search for monster. 
 
 A request is also made to the MongoDB backend server to have data persistent storage. 
+
 Users must supply an email and are authorized using Jason Web Token.
 
 ## Future Updates
 ==============================
 
 Add roll feature for monsters
+
 Add damage for monsters
+
 Add initiative for turn determination
 
 # Authors
