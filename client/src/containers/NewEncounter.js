@@ -14,12 +14,12 @@ class NewEncounter extends Component {
         };
     }
 
-    handleNewEncounter = event => {
+    handleNewEncounter =  async (event) => {
         const {removeError} = this.props;
-        removeError();
         event.preventDefault();
+        await this.props.postEncounter(this.state);
         //Post request must contain "title: $sometext "
-        this.props.postEncounter(this.state);
+        removeError();
         this.setState({title:""});
     }
 

@@ -13,8 +13,8 @@ import "./Monster.css";
         this.setState({show: !this.state.show});
     }
 
-    handleSave = () => {
-        this.props.saveMonster()
+    handleSave = async () => {
+        await this.props.saveMonster();
         this.props.removeError()
     }
 
