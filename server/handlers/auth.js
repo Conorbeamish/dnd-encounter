@@ -54,7 +54,7 @@ exports.signup = async function(req, res, next){
         }
         return next({
             status: 400,
-            message: err.message
+            message: "Please enter all fields to signup"
         });
     }
 }

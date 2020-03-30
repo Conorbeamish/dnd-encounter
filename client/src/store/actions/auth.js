@@ -44,9 +44,10 @@ export function authUser(type, userData){
 export function resetPassword(email){
     return dispatch => {
         return new Promise((resolve, reject) => {
-            return apiCall("post", `/api/auth/reset/${email}`).then(
-                resolve()
-            )
+            return apiCall("post", `/api/auth/reset/${email}`).then(() => {
+                dispatch(removeError())
+                resolve();
+            })
             .catch( err => {
                 dispatch(addError(err.message));
                 reject(); //API FAILED
@@ -58,9 +59,10 @@ export function resetPassword(email){
 export function newPassword(userID, token, password){
     return dispatch => {
         return new Promise((resolve, reject) => {
-            return apiCall("post", `/api/auth/reset/${userID}/${token}`, password).then(
-                resolve()
-            )
+            return apiCall("post", `/api/auth/reset/${userID}/${token}`, password).then(() => {
+                dispatch(removeError())
+                resolve();
+            })
             .catch( err => {
                 dispatch(addError(err.message));
                 reject(); //API FAILED

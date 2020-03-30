@@ -63,6 +63,13 @@ exports.receiveNewPassword = (req, res, next) => {
     const {userID, token} = req.params
     const {password} = req.body
 
+    if(password.length === 0){
+        return next({
+            status: 400,
+            message: "Password is required"
+        })
+    }
+
     User.findOne({_id: userID})
     .then(user => {
         const secret = user.password + "-" + user.createdAt
