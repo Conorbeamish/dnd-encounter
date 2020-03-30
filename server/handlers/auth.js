@@ -50,11 +50,13 @@ exports.signup = async function(req, res, next){
     } catch (err){
         //Validation fails, not unique
         if(err.code === 11000){
-            err.message = "Username/email taken";
+            err.message = "Email taken";
+        } else {
+            err.message = "Please enter all fields to sign up";
         }
         return next({
             status: 400,
-            message: "Please enter all fields to signup"
+            message: err.message
         });
     }
 }

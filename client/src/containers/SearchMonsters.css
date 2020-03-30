@@ -1,6 +1,7 @@
 .search-monsters{
     min-height: 30vh;
     background-color: rgba(49, 54, 57, 0.25);
+    padding-bottom: 1rem;
 }
 
 .search-monsters-title{
