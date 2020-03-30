@@ -19,31 +19,47 @@ const hashPasswordToken = ({
     return token
 }
 
-exports.sendResetEmail = async(req, res) => {
+exports.sendResetEmail = async(req, res, next) => {
     const { email } = req.params
     let user
     try {
-        user = await User.findOne({email}).exec()
-    } catch (err){
-        res.status(404).json("User does not exist")
-    }
-    const token = hashPasswordToken(user)
-    const url = resetPasswordURL(user, token)
-    const emailTemplate = resetPasswordTemplate(user, url)
-
-    const sendEmail = () => {
-        transporter.sendMail(emailTemplate, (err, info) => {
-            if(err){
-                res.status(500).json("Err sending mail")
+        await User.findOne({email}, function(err, result){
+            if(!result){
+                return next({ 
+                    status: 404,
+                    message: "User does not exist"
+                })
             } else {
-                return res.status(200).json(info)
+                user = result;
             }
+        }).exec()
+
+        const token = hashPasswordToken(user)
+        const url = resetPasswordURL(user, token)
+        const emailTemplate = resetPasswordTemplate(user, url)
+
+        const sendEmail = () => {
+            transporter.sendMail(emailTemplate, (err, info) => {
+                if(err){
+                    return next({
+                        status: 500,
+                        message: "Error sending email"
+                    })
+                } else {
+                    return res.status(200).json(info)
+                }
+            })
+        }
+        sendEmail()
+    } catch (err){
+        return next({ 
+            status: 404,
+            message: "User does not exist"
         })
-    }
-    sendEmail()
+    }    
 }
 
-exports.receiveNewPassword = (req, res) => {
+exports.receiveNewPassword = (req, res, next) => {
     const {userID, token} = req.params
     const {password} = req.body
 
@@ -53,17 +69,26 @@ exports.receiveNewPassword = (req, res) => {
         const payload = jwt.decode(token, secret)
         if(payload.userID === user.id){
             bcrypt.genSalt(10, function(err, salt){
-                if(err) return
+                if(err){ return next(err)}
                 bcrypt.hash(password, salt, function(err, hash){
-                    if(err) return
-                    User.findOneAndUpdate({_id: userID}, {password: hash})
-                    .then(() => res.status(202).json("Password Changed"))
-                    .catch(err => res.status(500).json(err))
+                    if(err){ return next(err)}
+                    User.findOneAndUpdate({_id: userID}, {password: hash}, function(err, result){
+                        if(err){
+                            return next({
+                                status: 500
+                            })
+                        } else {
+                            return(res.status(202).json("Password Changed"))
+                        }
+                    })
                 })
             })
         }
     })
     .catch(() => {
-        res.status(401).json("Invalid User")
+        return next({
+            status: 401,
+            message: "Invalid user"
+        })
     })
 }

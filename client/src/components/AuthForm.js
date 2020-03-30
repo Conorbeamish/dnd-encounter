@@ -30,13 +30,13 @@ class AuthForm extends Component {
         //check if request is for reset or change
         if(this.props.change){
             this.props.newPassword(userID, token, this.state).then(() => {
-                this.props.history.push("/signin")
+                // this.props.history.push("/signin")
             }).catch(() => {
                 return;
             })
         } else {
             this.props.resetPassword(this.state.email).then(() => {
-                this.props.history.push("/")
+                // this.props.history.push("/")
             }).catch(() => {
                 return;
             })
