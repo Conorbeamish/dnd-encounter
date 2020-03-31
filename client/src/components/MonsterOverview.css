@@ -7,6 +7,10 @@
     transition: background-color 0.5s ease;
 }
 
+.ov-monster-title{
+    font-weight: bold;
+}
+
 .ov-monster div {
     margin-right: 0.25rem;
 }

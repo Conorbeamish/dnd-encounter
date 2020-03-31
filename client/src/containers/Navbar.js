@@ -19,9 +19,6 @@ class Navbar extends Component{
                     Home
                     </Link>
                 </div>
-                <div className="brand-logo nav-item">
-                    D&D Encounter
-                </div>
                 {this.props.currentUser.isAuthenticated ? (
                     <ul className="nav-item" style={{margin: 0}}>
                         <li className="nav-user">

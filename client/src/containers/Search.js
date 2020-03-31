@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
 import { saveMonster} from "../store/actions/monsters";
 import Monster from "../components/Monster";
-import "./SearchMonsters.css";
+import "./Search.css";
 
 class SearchMonsters extends Component {
     constructor(props) {
@@ -39,10 +39,10 @@ class SearchMonsters extends Component {
         )))
 
         return(
-            <div className="search-monsters">
-                <h3 className="search-monsters-title">
-                    Search Monsters
-                </h3>
+            <div className="search">
+                <h2 className="search-title">
+                    Search
+                </h2>
                 {this.props.errors.message && (
                     <div>
                         {this.props.errors.message}
@@ -61,7 +61,8 @@ class SearchMonsters extends Component {
                         value={this.state.search}
                         onChange= {this.handleChange}
                     />
-                    <button className="search-monsters-btn" type="submit">
+
+                    <button className="search-btn" type="submit">
                         Search
                     </button>
                 </form>

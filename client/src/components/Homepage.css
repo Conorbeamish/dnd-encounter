@@ -14,26 +14,35 @@
     text-shadow: 0 0 8px #66757f;
 }
 
-.homepage a{
-    cursor: pointer;
-    background-color: rgba(49, 54, 57, 0.75);
-    border: solid 1px #f9f9f9;
-    border-radius: 0.25rem;
-    font-size: inherit;
-    font-family: inherit;
-    color: #f9f9f9;
-    transition: 300ms;
-    padding: 0.25rem;
-    margin: 1rem;
-    text-decoration: none;
-}
-    
-.homepage a:hover{
-    background-color: #313639;
-    color: #fefefe;
+.homepage h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3rem;
 }
 
-.homepage a:focus{
-    background-color: #313639;
-    color: #fefefe;
+.homepage-links{
+    margin: 2rem auto 0 auto;
+    padding-top: 1rem;
+    border-top: 2px solid #e40611;
+    
+}
+
+.homepage-link{
+    cursor: pointer;
+    background-color: none;
+    color: #f9f9f9;
+    transition: 300ms;
+    margin: 0 0.5rem 0 0.5rem;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Cinzel Decorative', cursive;
+}
+    
+.homepage-link:hover{
+    color: #313639;
+}
+
+.homepage-link:focus{
+    color: #313639;
+    outline: none;
 }

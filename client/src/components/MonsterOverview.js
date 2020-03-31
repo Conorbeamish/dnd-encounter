@@ -32,7 +32,7 @@ class MonsterOverview extends Component{
         
         return(
             <div className ="ov-monster" style={isDead}>
-                <div>{name.substring(0,10)}...{pipe}</div>
+                <div className="ov-monster-title">{name.substring(0,10)}{pipe}</div>
                 <form  onSubmit={e => { e.preventDefault(); }}>
                     <label htmlFor="id">HP: </label>
                     <input 

@@ -7,12 +7,13 @@ const Homepage = ({currentUser}) => {
     if(!currentUser.isAuthenticated){
         return(
             <div className="homepage">
-                <h1>DnD Encounter</h1>
+                <h1>D&D Encounter</h1>
                 <div className="homepage-links">
-                    <Link to="/signup">
+                    <Link className = "homepage-link" to="/signup">
                         Sign up
                     </Link>
-                    <Link to="/signin">
+                    <span style={{color: "#e40611", fontSize:"2rem"}}> | </span>
+                    <Link className = "homepage-link" to="/signin">
                         Sign In
                     </Link>
                 </div>
@@ -21,10 +22,10 @@ const Homepage = ({currentUser}) => {
     }
     return (
         <div className="homepage">
-            <h1>DnD Encounter</h1>
-            <div>
-                <Link to={encounterLink}>
-                    Encounters    
+            <h1>D&D Encounter</h1>
+            <div className="homepage-links">
+                <Link  className = "homepage-link"  to={encounterLink}>
+                    Enter  
                 </Link>
             </div>
         </div>

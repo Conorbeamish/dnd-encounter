@@ -74,6 +74,7 @@
 .monster-btn:focus{
     background: #313639;
     color: #fefefe;
+    outline: none;
 }
 .monster-btn-delete{
     border: 1px solid #e40611;
@@ -88,6 +89,7 @@
 .monster-btn-delete:focus{
     background: #e40611;
     color: #fefefe;
+    outline: none;
 }
 
 .monster-buttons{

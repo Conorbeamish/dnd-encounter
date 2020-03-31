@@ -1,27 +1,26 @@
-.search-monsters{
+.search{
     background-color: rgba(49, 54, 57, 0.25);
+    min-height: 30vh;
 }
 
-.search-monsters-title{
+.search-title{
     border-top: 2px solid #e40611;
     margin-top: 2rem;
     padding-top: 2rem;
 }
 
-.search-monsters form{
+.search form{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin: 1rem auto 0 auto;
     padding: 0.5rem 0 0.5rem 0;
-    background-color: #f8f8f8;
-    border-top: 1px solid #e40611;
     position: sticky;
     bottom: 0;
 }
 
-.search-monsters input{
+.search input{
     border-radius: 0.25rem;
     border: none;
     padding: 0.1rem;
@@ -30,12 +29,12 @@
     border: 1px solid #313639;
 }
 
-.search-monsters input:hover{
+.search input:hover{
     outline: none;
     border: 1px solid rgba(49, 54, 57, 0.75);
 }
 
-.search-monsters-btn{
+.search-btn{
     cursor: pointer;
     border: solid 1px #313639;
     border-radius: 0.25rem;
@@ -43,19 +42,22 @@
     font-size: inherit;
     font-family: inherit;
     color: #313639;
+    background-color: #f8f8f8;
     transition: 300ms;
     padding: 0.25rem;
     margin-left: 1rem;
 }
 
-.search-monsters-btn:hover{
-    background-color: #313639;
+.search-btn:hover{
+    background-color:  #313939;
     color: #fefefe;
 }
 
-.search-monsters-btn:focus{
-    background-color: #313639;
+.search-btn:focus{
+    background-color:  #313939;
     color: #fefefe;
+    outline: none;
+
 }
 
 .monster-no-result{

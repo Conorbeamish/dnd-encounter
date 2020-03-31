@@ -8,7 +8,7 @@ const Encounter = ({title, date, removeEncounter, user, id}) => {
 
     return(
         <div className="encounter">
-            <h4>{title}</h4>
+            <h3>{title}</h3>
             <div>
                 <Moment className="encounter-date" format="DD/MM/YYYY">{date}</Moment>
                 <Link to={monstersLink}>

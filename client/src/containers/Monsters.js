@@ -5,7 +5,7 @@ import { fetchEncounter } from "../store/actions/encounters";
 import { removeError } from "../store/actions/errors";
 import Monster from "../components/Monster";
 import MonsterOverview from "../components/MonsterOverview";
-import SearchMonsters from "./SearchMonsters.js";
+import Search from "./Search.js";
 import "./Monsters.css";
 
 class Monsters extends Component {
@@ -54,7 +54,7 @@ class Monsters extends Component {
 
         return(
             <div className="monsters">
-                {currentEncounter.encounter && (<h3>{currentEncounter.encounter.title}</h3>)}
+                {currentEncounter.encounter && (<h2>{currentEncounter.encounter.title}</h2>)}
 
                 <div className="monster-overview">
                     <div className="monster-overview-list" style={isHidden}> {monsterOverviewList} </div>
@@ -66,7 +66,7 @@ class Monsters extends Component {
                 <div className="monster-list">{monsterList}</div>
                 {monsters.length === 0 && (<div className="no-monsters-msg">You have no monsters saved, try searching for some below...</div>)}
 
-                <SearchMonsters 
+                <Search
                     userID = {this.props.match.params.id}
                     encounterID = {this.props.match.params.encounter_id}
                     removeError = {this.props.removeError}
