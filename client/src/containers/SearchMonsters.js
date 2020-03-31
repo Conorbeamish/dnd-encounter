@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchSearchMonsters } from "../store/actions/searchMonsters";
 import { saveMonster} from "../store/actions/monsters";
-import Monster from "./Monster";
+import Monster from "../components/Monster";
 import "./SearchMonsters.css";
 
 class SearchMonsters extends Component {
@@ -48,6 +48,12 @@ class SearchMonsters extends Component {
                         {this.props.errors.message}
                     </div>
                 )}
+                
+                {searchMonsters[0] == ""  && (
+                    <div className="monster-no-result">No results, try searching something else</div>
+                )}
+                <div className="monster-list">{searchMonstersList} </div>
+
                 <form onSubmit ={this.handleSubmit}>
                     <input 
                         type="text" 
@@ -59,10 +65,6 @@ class SearchMonsters extends Component {
                         Search
                     </button>
                 </form>
-                {searchMonsters[0] == ""  && (
-                    <div className="monster-no-result">No results, try searching something else</div>
-                )}
-                <div className="monster-list">{searchMonstersList} </div>
             </div>
         )
     }

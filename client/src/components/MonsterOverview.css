@@ -1,0 +1,45 @@
+.ov-monster{
+    display: flex;
+    border: 1px solid #313639;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    margin: 0.25rem;
+    transition: background-color 0.5s ease;
+}
+
+.ov-monster div {
+    margin-right: 0.25rem;
+}
+
+.ov-monster input{
+    margin-right: 0.25rem;
+}
+
+.ov-monster input{
+    width: 2.5rem;
+    margin-right: 0.25rem;
+
+}
+
+.roll {
+    cursor: pointer;
+    margin-left: 0.25rem;
+    font-family: inherit;
+    border-radius: 0.25rem;
+    color: #313639;
+    background:none;
+    border: 1px solid #313639;
+    transition: 300ms;
+    min-width: 2rem;
+}
+
+.roll:hover{
+    background-color: #313639;
+    color: #f8f8f8;
+}
+
+.roll:focus{
+    background-color: #313639;
+    color: #f8f8f8;
+    outline: none;
+}

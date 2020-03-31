@@ -1,22 +1,24 @@
 .search-monsters{
-    min-height: 30vh;
     background-color: rgba(49, 54, 57, 0.25);
-    padding-bottom: 1rem;
 }
 
 .search-monsters-title{
     border-top: 2px solid #e40611;
     margin-top: 2rem;
     padding-top: 2rem;
-
 }
 
 .search-monsters form{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin: 1rem auto 0 auto;
+    padding: 0.5rem 0 0.5rem 0;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e40611;
+    position: sticky;
+    bottom: 0;
 }
 
 .search-monsters input{
@@ -25,7 +27,7 @@
     padding: 0.1rem;
     height: 1.5rem;
     background-color: #fefefe;
-    border: 1px solid #fefefe;
+    border: 1px solid #313639;
 }
 
 .search-monsters input:hover{
