@@ -1,6 +1,6 @@
 import {apiCall} from "../../services/api";
 import {addError} from "./errors";
-import {LOAD_ENCOUNTERS, REMOVE_ENCOUNTER, LOAD_ENCOUNTER} from "../actionTypes";
+import {LOAD_ENCOUNTERS, REMOVE_ENCOUNTER, LOAD_ENCOUNTER, CLEAR_ENCOUNTER} from "../actionTypes";
 
 export const loadEncounters = encounters => ({
     type: LOAD_ENCOUNTERS,
@@ -11,6 +11,10 @@ export const loadEncounter = encounter => ({
     type: LOAD_ENCOUNTER,
     encounter
 });
+
+export const clearEncounter = () => ({
+    type: CLEAR_ENCOUNTER
+})
 
 export const remove = id => ({
     type: REMOVE_ENCOUNTER,

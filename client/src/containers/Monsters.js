@@ -70,6 +70,8 @@ class Monsters extends Component {
                     userID = {this.props.match.params.id}
                     encounterID = {this.props.match.params.encounter_id}
                     removeError = {this.props.removeError}
+                    history = {this.props.history}
+                    
                 />
             </div>
         )

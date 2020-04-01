@@ -5,7 +5,6 @@ import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
 import {authUser, resetPassword, newPassword} from "../store/actions/auth";
 import {removeError} from "../store/actions/errors";
-import {clearSearchResults } from "../store/actions/searchResults";
 import Encounters from "./Encounters";
 import Monsters from "./Monsters";
 import withAuth from "../hocs/withAuth";
@@ -18,8 +17,8 @@ const Main = props => {
         currentUser, 
         resetPassword, 
         newPassword,
-        clearSearchResults
     } = props;
+    
     return(
         <div className="container">
             <Switch>
@@ -89,7 +88,6 @@ const Main = props => {
                 />
                 <Route 
                     exact path="/users/:id/encounters/:encounter_id"
-                    onLeave= {clearSearchResults()}
                     component={withAuth(Monsters)}
                 />
             </Switch>
@@ -105,5 +103,12 @@ function mapStateToProps(state){
 }
 
 export default withRouter(
-    connect(mapStateToProps, {authUser, removeError, newPassword, resetPassword, clearSearchResults})(Main)
+    connect(
+        mapStateToProps,
+        {
+            authUser, 
+            removeError, 
+            newPassword, 
+            resetPassword
+        })(Main)
 );

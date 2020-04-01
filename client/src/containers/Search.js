@@ -23,7 +23,6 @@ class SearchResults extends Component {
         e.preventDefault();
         this.props.fetchSearchResults(this.state.search, "monsters");
     }
-
     
     render(){
 
@@ -34,8 +33,14 @@ class SearchResults extends Component {
             removeError, 
             searchResults, 
             errors,
-            clearSearchResults
+            clearSearchResults,
+            history
         } = this.props;
+
+        //Clear search on page change
+        history.listen(() => {
+            clearSearchResults();
+        });
         
         let searchMonstersList = searchResults.map( i => i.map(m => (
             <Monster 
