@@ -12,6 +12,14 @@ const encounterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Monster"
     }],
+    weapons: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Weapon"
+    }],
+    magicItems: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MagicItem"
+    }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

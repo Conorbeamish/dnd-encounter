@@ -7,6 +7,8 @@ const express                       = require("express"),
       authRoutes                    = require("./routes/auth"),
       encountersRoutes              = require("./routes/encounters"),
       monstersRoutes                = require("./routes/monsters"),
+      weaponsRoutes                 = require("./routes/weapons"),
+      magicItemsRoutes              = require("./routes/magicItems"),
       {loginRequired, correctUser}  = require("./middleware/auth");
 
 const app = express();
@@ -33,6 +35,22 @@ app.use(
     correctUser,
     monstersRoutes
 )
+
+//Weapons Routes
+app.use(
+    "/api/users/:id/encounters/:encounter_id/magicitems",
+    loginRequired,
+    correctUser,
+    weaponsRoutes
+)
+
+app.use(
+    "/api/users/:id/encounters/:encounter_id/weapons",
+    loginRequired,
+    correctUser,
+    magicItemsRoutes
+)
+
 
 app.use((req, res, next) => {
     let err = new Error("Not Found")

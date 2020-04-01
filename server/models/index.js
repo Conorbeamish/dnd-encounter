@@ -14,3 +14,5 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dnd-encounter",
 module.exports.User = require("./user");
 module.exports.Encounter = require("./encounter");
 module.exports.Monster = require("./monster");
+module.exports.Weapon = require("./weapon");
+module.exports.MagicItem = require("./magicItem");
