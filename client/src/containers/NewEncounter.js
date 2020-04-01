@@ -17,9 +17,8 @@ class NewEncounter extends Component {
     handleNewEncounter =  async (event) => {
         const {removeError} = this.props;
         event.preventDefault();
-        await this.props.postEncounter(this.state);
-        //Post request must contain "title: $sometext "
         removeError();
+        this.props.postEncounter(this.state);
         this.setState({title:""});
     }
 
