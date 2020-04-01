@@ -4,7 +4,7 @@ import "./Encounter.css"
 import Moment from 'react-moment';
 
 const Encounter = ({title, date, removeEncounter, user, id}) => { 
-    const monstersLink = `/users/${user}/encounters/${id}/monsters`;
+    const monstersLink = `/users/${user}/encounters/${id}`;
 
     return(
         <div className="encounter">

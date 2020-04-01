@@ -3,7 +3,7 @@ import currentUser from "./currentUser";
 import errors from "./errors";
 import encounters from "./encounters";
 import monsters from "./monsters";
-import searchMonsters from "./searchMonsters";
+import searchResults from "./searchResults";
 import currentEncounter from "./currentEncounter";
 
 const rootReducer = combineReducers({
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     errors,
     encounters,
     monsters,
-    searchMonsters,
+    searchResults,
     currentEncounter
 });
 

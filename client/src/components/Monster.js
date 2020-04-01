@@ -101,14 +101,14 @@ import "./Monster.css";
                         <div>Senses: {info.senses}</div>
                         <div>Languages: <em>{info.languages}</em></div>
 
-                        <h3 className="monster-actions-title">Actions</h3>
+                        <h4 className="monster-actions-title">Actions</h4>
                         <div>{this.actionList()}</div>
 
-                        <h3 className="monster-actions-title">Special Abilities</h3>
+                        <h4 className="monster-actions-title">Special Abilities</h4>
                         {this.getAbilities(info.special_abilities)}
                         {info.legendary_actions.length !==0 && (
                             <div>
-                                <h3 className="monster-actions-title">Legendary Actions</h3>
+                                <h4 className="monster-actions-title">Legendary Actions</h4>
                                 {info.legendary_desc}
                                 {this.getAbilities(info.legendary_actions)}
                             </div>

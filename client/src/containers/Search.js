@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { fetchSearchMonsters } from "../store/actions/searchMonsters";
+import { fetchSearchResults, clearSearchResults } from "../store/actions/searchResults";
 import { saveMonster} from "../store/actions/monsters";
 import Monster from "../components/Monster";
 import "./Search.css";
 
-class SearchMonsters extends Component {
+class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -21,14 +21,23 @@ class SearchMonsters extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.fetchSearchMonsters(this.state.search);
+        this.props.fetchSearchResults(this.state.search, "monsters");
     }
 
+    
     render(){
 
-        const {saveMonster, userID, encounterID, removeError, searchMonsters} = this.props;
+        const {
+            saveMonster, 
+            userID, 
+            encounterID, 
+            removeError, 
+            searchResults, 
+            errors,
+            clearSearchResults
+        } = this.props;
         
-        let searchMonstersList = searchMonsters.map( i => i.map(m => (
+        let searchMonstersList = searchResults.map( i => i.map(m => (
             <Monster 
                 key={m.name}
                 info={m}
@@ -43,13 +52,13 @@ class SearchMonsters extends Component {
                 <h2 className="search-title">
                     Search
                 </h2>
-                {this.props.errors.message && (
+                {errors.message && (
                     <div>
-                        {this.props.errors.message}
+                        {errors.message}
                     </div>
                 )}
                 
-                {searchMonsters[0] == ""  && (
+                {searchResults[0] == ""  && (
                     <div className="monster-no-result">No results, try searching something else</div>
                 )}
                 <div className="monster-list">{searchMonstersList} </div>
@@ -65,6 +74,7 @@ class SearchMonsters extends Component {
                     <button className="search-btn" type="submit">
                         Search
                     </button>
+                    <button onClick={clearSearchResults} className="search-btn" type= "button">Clear</button>
                 </form>
             </div>
         )
@@ -74,8 +84,8 @@ class SearchMonsters extends Component {
 function mapStateToProps(state) {
     return{
         errors: state.errors,
-        searchMonsters: state.searchMonsters
+        searchResults: state.searchResults
     };
 }
 
-export default connect(mapStateToProps, { fetchSearchMonsters, saveMonster})(SearchMonsters);
+export default connect(mapStateToProps, { fetchSearchResults, clearSearchResults, saveMonster})(SearchResults);
