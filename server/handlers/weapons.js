@@ -9,7 +9,7 @@ exports.createWeapon = async function(req, res, next){
         });
 
         let foundEncounter = await db.Encounter.findById(req.params.encounter_id);
-        foundEncounter.weapon.push(weapon.id);
+        foundEncounter.weapons.push(weapon.id);
         await foundEncounter.save();
         let foundWeapon = await db.Weapon.findById(weapon._id)
         .populate("encounter",{

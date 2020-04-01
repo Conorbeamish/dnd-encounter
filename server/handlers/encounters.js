@@ -22,7 +22,12 @@ exports.getEncounter = async function(req, res, next){
     try{
         let encounter = await db.Encounter.findById(req.params.encounter_id).populate("monsters", {
             info: true
+        }).populate("weapons", {
+            info: true
+        }).populate("magicItems", {
+            info: true
         })
+
         return res.status(200).json(encounter);
     } catch (err) {
         return next(err);

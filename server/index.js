@@ -38,14 +38,15 @@ app.use(
 
 //Weapons Routes
 app.use(
-    "/api/users/:id/encounters/:encounter_id/magicitems",
+    "/api/users/:id/encounters/:encounter_id/weapons",
     loginRequired,
     correctUser,
     weaponsRoutes
 )
 
+//Magic Items Routes
 app.use(
-    "/api/users/:id/encounters/:encounter_id/weapons",
+    "/api/users/:id/encounters/:encounter_id/magicitems",
     loginRequired,
     correctUser,
     magicItemsRoutes

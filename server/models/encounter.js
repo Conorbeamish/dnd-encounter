@@ -37,6 +37,16 @@ encounterSchema.pre("remove", async function(next){
             let monster = await db.Monster.findById(id);
             await monster.remove();
         });
+        //remove weapons
+        this.weapons.forEach( async function(id){
+            let weapons = await db.Weapon.findById(id);
+            await weapons.remove();
+        });
+        //remove magic items
+        this.magicItems.forEach( async function(id){
+            let magicItems = await db.MagicItem.findById(id);
+            await magicItems.remove();
+        });
         return next();
     } catch(err){
         return next(err);

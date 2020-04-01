@@ -9,9 +9,9 @@ exports.createMagicItem = async function(req, res, next){
         });
 
         let foundEncounter = await db.Encounter.findById(req.params.encounter_id);
-        foundEncounter.MagicItem.push(magicItem.id);
+        foundEncounter.magicItems.push(magicItem.id);
         await foundEncounter.save();
-        let foundMagicItem = await db.MagicItem.findById(MagicItem._id)
+        let foundMagicItem = await db.MagicItem.findById(magicItem._id)
         .populate("encounter",{
             title: true
         });
@@ -21,7 +21,7 @@ exports.createMagicItem = async function(req, res, next){
     }
 };
 
-exports.deleteWeapon = async function(req, res, next){
+exports.deleteMagicItem = async function(req, res, next){
     try{
        let foundMagicItem = await db.MagicItem.findById(req.params.magicItem_id);
        await foundMagicItem.remove();
