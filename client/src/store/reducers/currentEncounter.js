@@ -7,7 +7,7 @@ const currentEncounter = (state = initialState, action) => {
         case LOAD_ENCOUNTER:
             return {
                 encounter: action.encounter
-            };    
+            }; 
         case CLEAR_ENCOUNTER:
             return initialState
         default:

@@ -10,6 +10,11 @@ const MagicItem = props => {
         type,
         requires_attunement
     } = info
+
+    const handleSave = async () => {
+        await props.saveItem();
+        props.removeError()
+    }
     
     return  (
         <div className="magic-item">
@@ -20,6 +25,12 @@ const MagicItem = props => {
             <div>{desc}</div>
             <div><strong>{rarity}</strong></div>
             <div><em>{requires_attunement}</em></div>
+            {props.saveItem && (
+                <button className="magic-item-btn" onClick={handleSave}>
+                    Save
+                </button>
+                )
+            }
         </div>
     )
 }

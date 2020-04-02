@@ -14,7 +14,7 @@ import "./Monster.css";
     }
 
     handleSave = async () => {
-        await this.props.saveMonster();
+        await this.props.saveItem();
         this.props.removeError()
     }
 
@@ -69,7 +69,7 @@ import "./Monster.css";
     }
 
     render(){
-        const {info, saveMonster, removeMonster} = this.props
+        const {info, saveItem, removeMonster} = this.props
     
         return(
             <div className="monster">
@@ -131,7 +131,7 @@ import "./Monster.css";
                 
 
                 {/* If a searched monster */}
-                {saveMonster && (
+                {saveItem && (
                     <button className="monster-btn" onClick={this.handleSave}>
                         Save
                     </button>

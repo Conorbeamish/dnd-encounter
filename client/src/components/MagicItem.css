@@ -18,6 +18,32 @@
     margin: 0 0 1rem 0;
 }
 
+
+.magic-item button{
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    font-size: inherit;
+    border-radius: 0.25rem;
+   }
+   
+.magic-item-btn{
+    border: 1px solid #0505a1;
+}
+
+.magic-item-btn:hover{
+    background: #0505a1;
+    color: #fefefe;
+    transition: 300ms;
+}
+
+.magic-item-btn:focus{
+    background: #0505a1;
+    color: #fefefe;
+    outline: none;
+}
+
+
 @media only screen and (max-width: 768px) {
     .magic-item{
         width: 90%;

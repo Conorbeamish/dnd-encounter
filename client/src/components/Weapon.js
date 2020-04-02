@@ -13,6 +13,11 @@ const Weapon = props => {
         properties
     } = info 
 
+    const handleSave = async () => {
+        await props.saveItem();
+        props.removeError()
+    }
+
     const getPropertyList = () => {
         let propertyList = properties.map(p => (
             <li key={p}>{p}</li>
@@ -30,6 +35,12 @@ const Weapon = props => {
             <div>Dmg Dice: {damage_dice} <em>{damage_type}</em></div>
             <div>weight : {weight}</div>
             {(properties !== null ) && (<ul>{getPropertyList()}</ul>)}
+            {props.saveItem && (
+                <button className="weapon-btn" onClick={handleSave}>
+                    Save
+                </button>
+                )
+            }
         </div>   
     )
 }

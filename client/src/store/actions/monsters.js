@@ -1,13 +1,16 @@
 import {apiCall} from "../../services/api";
 import {addError} from "./errors";
-import {LOAD_MONSTERS, REMOVE_MONSTER} from "../actionTypes";
+import {
+        LOAD_MONSTERS, 
+        REMOVE_MONSTER,
+    } from "../actionTypes";
 
 export const loadMonsters = monsters => ({
     type: LOAD_MONSTERS,
     monsters
 });
 
-export const remove = id => ({
+export const removeMonsterID = id => ({
     type: REMOVE_MONSTER,
     id
 });
@@ -15,7 +18,7 @@ export const remove = id => ({
 export const removeMonster = (userID, encounterID, monsterID) => {
     return dispatch => {
         return apiCall("delete", `/api/users/${userID}/encounters/${encounterID}/monsters/${monsterID}`)
-        .then(() => dispatch(remove(monsterID)))
+        .then(() => dispatch(removeMonsterID(monsterID)))
         .catch((err) => addError(err.message));
     }
 } 
@@ -29,13 +32,5 @@ export function fetchMonsters(userID, encounterID){
         .catch(err => {
             dispatch(addError(err.message));
         });
-    }
-}
-
-export function saveMonster(userID, encounterID, data){
-    return dispatch => {
-        return apiCall("post", `/api/users/${userID}/encounters/${encounterID}/monsters`, data)
-        .then(res => {})
-        .catch(err => dispatch(addError(err.message)));
     }
 }

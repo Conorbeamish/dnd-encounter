@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { fetchSearchResults, clearSearchResults } from "../store/actions/searchResults";
-import { saveMonster} from "../store/actions/monsters";
+import { saveItem } from "../store/actions/encounterItems"
 import Monster from "../components/Monster";
 import Weapon from "../components/Weapon";
 import MagicItem from "../components/MagicItem";
@@ -29,14 +29,82 @@ class SearchResults extends Component {
         e.preventDefault();
         this.props.fetchSearchResults(search, type);
     }
-    
-    render(){
 
+    getMonsters = () => {
         const {
-            saveMonster, 
+            saveItem, 
             userID, 
             encounterID, 
             removeError,
+            searchResults
+        } = this.props
+
+        let searchMonstersList = searchResults.results.map(m => (
+            <Monster 
+                key={m.name}
+                info={m}
+                removeError={removeError}
+                saveItem = {saveItem.bind(this, userID, encounterID, "monsters", {"info": m})}
+
+            />
+        ))
+        return(searchMonstersList);
+    }
+
+    getMagicItems = () => {
+        const {
+            saveItem, 
+            userID, 
+            encounterID, 
+            removeError,
+            searchResults
+        } = this.props
+
+        let searchMagicItemList = searchResults.results.map(m => (
+            <MagicItem
+                key={m.name}
+                info={m}
+                removeError={removeError}
+                saveItem = {saveItem.bind(this, userID, encounterID, "magicitems", {"info": m})}
+            />
+        ))
+        return searchMagicItemList
+    }
+
+    getWeapons = () => {
+        const {
+            searchResults, 
+            saveItem,
+            removeError,
+            userID, 
+            encounterID, 
+        } = this.props;
+        let searchWeaponsList = searchResults.results.map(w => (
+            <Weapon
+                key={w.name}
+                info={w}
+                saveItem = {saveItem.bind(this, userID, encounterID, "weapons", {"info": w})}
+                removeError={removeError}
+            />
+        ))
+        return searchWeaponsList
+    }
+
+    renderSearchResult = (type) => {
+        switch(type){
+            case "monsters":
+                return this.getMonsters();
+            case "weapons":
+                return this.getWeapons();
+            case "magicitems":
+                return this.getMagicItems();
+            default:
+                return "";
+        }
+    }
+
+    render(){
+        const {
             errors,
             searchResults,
             clearSearchResults,
@@ -48,52 +116,7 @@ class SearchResults extends Component {
             clearSearchResults();
         });
 
-        const getMonsters = () => {
-            let searchMonstersList = searchResults.results.map(m => (
-                <Monster 
-                    key={m.name}
-                    info={m}
-                    removeError={removeError}
-                    saveMonster = {saveMonster.bind(this, userID, encounterID, {"info": m})}
-    
-                />
-            ))
-            return(searchMonstersList);
-        }
-
-        const getMagicItems = () => {
-            let searchMagicItemList = searchResults.results.map(m => (
-                <MagicItem
-                    key={m.name}
-                    info={m}
-                />
-            ))
-            return searchMagicItemList
-        }
-
-        const getWeapons = () => {
-            let searchWeaponsList = searchResults.results.map(w => (
-                <Weapon
-                    key={w.name}
-                    info={w}
-                />
-            ))
-            return searchWeaponsList
-        }
-
-        const renderSearchResult = (type) => {
-            switch(type){
-                case "monsters":
-                    return getMonsters();
-                case "weapons":
-                    return getWeapons();
-                case "magicitems":
-                    return getMagicItems();
-                default:
-                    return "";
-            }
-        }
-
+        
         return(
             <div className="search">
                 <h2 className="search-title">
@@ -106,7 +129,7 @@ class SearchResults extends Component {
                 )}
 
                 <div className="search-list">
-                    {renderSearchResult(searchResults.searchType)} 
+                    {this.renderSearchResult(searchResults.searchType)} 
                 </div>
                 
                 {/* No Results */}
@@ -149,4 +172,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchSearchResults, clearSearchResults, saveMonster})(SearchResults);
+export default connect(mapStateToProps, { fetchSearchResults, clearSearchResults, saveItem})(SearchResults);

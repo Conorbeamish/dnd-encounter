@@ -18,6 +18,30 @@
     margin: 0 0 1rem 0;
 }
 
+.weapon button{
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    font-size: inherit;
+    border-radius: 0.25rem;
+   }
+   
+.weapon-btn{
+    border: 1px solid #1a962a;
+}
+
+.weapon-btn:hover{
+    background: #1a962a;
+    color: #fefefe;
+    transition: 300ms;
+}
+
+.weapon-btn:focus{
+    background: #1a962a;
+    color: #fefefe;
+    outline: none;
+}
+
 @media only screen and (max-width: 768px) {
     .weapon{
         width: 90%;
