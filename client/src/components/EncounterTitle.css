@@ -1,4 +1,4 @@
-.encounter{
+.encounter-title{
     color: #313639;
     display: flex;
     justify-content: space-between;
@@ -8,7 +8,7 @@
     text-align: left;
 }
 
-.encounter a{
+.encounter-title a{
     text-decoration: none;
     color: #313639;
     border: 1px solid rgba(49, 54, 57);
@@ -18,19 +18,19 @@
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
-.encounter a:hover{
+.encounter-title a:hover{
     background-color: #313639;
     color: #fefefe;
     transition: 300ms;
 }
 
-.encounter a:focus{
+.encounter-title a:focus{
     background-color: #313639;
     color: #fefefe;
     transition: 300ms;
 }
 
-.encounter button{
+.encounter-title button{
     cursor: pointer;
     border: solid 1px #e40611 ;
     background: none;
@@ -42,29 +42,29 @@
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
-.encounter button:hover{
+.encounter-title button:hover{
     background-color: #e40611;
     color: #fefefe;
 }
 
-.encounter button:focus{
+.encounter-title button:focus{
     background-color: #e40611;
     color: #fefefe;
 }
 
-.encounter h3 {
+.encounter-title h3 {
     margin: 0;
     max-width: 60%;
 }
 
 @media only screen and (max-width: 768px) {
-    .encounter-date {
+    .encounter-title-date {
         display: none;
     }
-    .encounter{
+    .encounter-title{
         flex-direction: column;
     }
-    .encounter h4{
+    .encounter-title h4{
         margin-bottom: 0.5rem;
         max-width: 90%;
     }

@@ -15,7 +15,8 @@ export function fetchSearchResults(search, type){
     return dispatch => {
         return apiCall("get", `https://api.open5e.com/${type}/?search=${search}`)
         .then((res) => {
-            dispatch(loadSearchResults(res.results));
+            res.searchType = type;
+            dispatch(loadSearchResults(res));
         })
         .catch(err => {
             dispatch(addError(err.message));

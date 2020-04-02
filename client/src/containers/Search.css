@@ -60,6 +60,12 @@
 
 }
 
-.monster-no-result{
+.search-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search-no-result{
     margin-top: 1rem;
 }

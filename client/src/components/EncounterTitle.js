@@ -1,16 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./Encounter.css"
+import "./EncounterTitle.css"
 import Moment from 'react-moment';
 
-const Encounter = ({title, date, removeEncounter, user, id}) => { 
+const EncounterTitle = ({title, date, removeEncounter, user, id}) => { 
     const monstersLink = `/users/${user}/encounters/${id}`;
 
     return(
-        <div className="encounter">
+        <div className="encounter-title">
             <h3>{title}</h3>
             <div>
-                <Moment className="encounter-date" format="DD/MM/YYYY">{date}</Moment>
+                <Moment className="encounter-title-date" format="DD/MM/YYYY">{date}</Moment>
                 <Link to={monstersLink}>
                         View
                 </Link>
@@ -22,5 +22,5 @@ const Encounter = ({title, date, removeEncounter, user, id}) => {
     )
 }
 
-export default Encounter;
+export default EncounterTitle;
  

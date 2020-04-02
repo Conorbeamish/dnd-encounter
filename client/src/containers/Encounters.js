@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import {fetchEncounters, removeEncounter} from "../store/actions/encounters";
-import Encounter from "../components/Encounter";
+import EncounterTitle from "../components/EncounterTitle";
 import NewEncounter from "../containers/NewEncounter";
 import "./Encounters.css";
 
@@ -15,7 +15,7 @@ class Encounters extends Component {
     render(){
         const {encounters, removeEncounter} = this.props
         let encounterList = encounters.map(e => (
-            <Encounter
+            <EncounterTitle
                 key={e._id}
                 id={e._id}
                 title={e.title}

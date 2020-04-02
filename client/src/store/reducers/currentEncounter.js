@@ -1,11 +1,15 @@
-import {LOAD_ENCOUNTER} from "../actionTypes";
+import {LOAD_ENCOUNTER, CLEAR_ENCOUNTER} from "../actionTypes";
 
-const currentEncounter = (state = [], action) => {
+const initialState = []
+
+const currentEncounter = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ENCOUNTER:
             return {
                 encounter: action.encounter
-            };        
+            };    
+        case CLEAR_ENCOUNTER:
+            return initialState
         default:
             return state;
     }

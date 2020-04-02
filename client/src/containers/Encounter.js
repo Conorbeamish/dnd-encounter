@@ -6,9 +6,9 @@ import { removeError } from "../store/actions/errors";
 import Monster from "../components/Monster";
 import MonsterOverview from "../components/MonsterOverview";
 import Search from "./Search.js";
-import "./Monsters.css";
+import "./Encounter.css";
 
-class Monsters extends Component {
+class Encounter extends Component {
 
     constructor(props){
         super(props);
@@ -85,4 +85,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { fetchMonsters, fetchEncounter, removeMonster, removeError})(Monsters);
+export default connect(mapStateToProps, { fetchMonsters, fetchEncounter, removeMonster, removeError})(Encounter);

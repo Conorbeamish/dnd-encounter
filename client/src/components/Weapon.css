@@ -1,0 +1,26 @@
+.weapon {
+    border: 1px solid #313639;
+    border-radius: 0.25rem;
+    text-align: left;
+    width: 27%;
+    margin: 1%;
+    padding: 2%;
+    background-color: #fefefe;
+    margin-bottom: auto;
+}
+
+.weapon-title h3{
+    margin: 0;
+    border-bottom: 2px solid #1a962a;
+}
+
+.weapon-title{
+    margin: 0 0 1rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .weapon{
+        width: 90%;
+        margin: 2%;
+    }
+  } 

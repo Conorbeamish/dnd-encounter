@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchSearchResults, clearSearchResults } from "../store/actions/searchResults";
 import { saveMonster} from "../store/actions/monsters";
 import Monster from "../components/Monster";
+import Weapon from "../components/Weapon";
+import MagicItem from "../components/MagicItem";
 import "./Search.css";
 
 class SearchResults extends Component {
@@ -11,17 +13,21 @@ class SearchResults extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            search: ""
+            search: "",
+            type: "monsters"
         };
     }
 
     handleChange(e) {
-        this.setState({ search: e.target.value})
+        this.setState({
+            [e.target.name] : e.target.value
+        })
     }
 
     handleSubmit(e){
+        const {search, type} = this.state
         e.preventDefault();
-        this.props.fetchSearchResults(this.state.search, "monsters");
+        this.props.fetchSearchResults(search, type);
     }
     
     render(){
@@ -30,9 +36,9 @@ class SearchResults extends Component {
             saveMonster, 
             userID, 
             encounterID, 
-            removeError, 
-            searchResults, 
+            removeError,
             errors,
+            searchResults,
             clearSearchResults,
             history
         } = this.props;
@@ -41,16 +47,52 @@ class SearchResults extends Component {
         history.listen(() => {
             clearSearchResults();
         });
-        
-        let searchMonstersList = searchResults.map( i => i.map(m => (
-            <Monster 
-                key={m.name}
-                info={m}
-                removeError={removeError}
-                saveMonster = {saveMonster.bind(this, userID, encounterID, {"info": m})}
 
-            />
-        )))
+        const getMonsters = () => {
+            let searchMonstersList = searchResults.results.map(m => (
+                <Monster 
+                    key={m.name}
+                    info={m}
+                    removeError={removeError}
+                    saveMonster = {saveMonster.bind(this, userID, encounterID, {"info": m})}
+    
+                />
+            ))
+            return(searchMonstersList);
+        }
+
+        const getMagicItems = () => {
+            let searchMagicItemList = searchResults.results.map(m => (
+                <MagicItem
+                    key={m.name}
+                    info={m}
+                />
+            ))
+            return searchMagicItemList
+        }
+
+        const getWeapons = () => {
+            let searchWeaponsList = searchResults.results.map(w => (
+                <Weapon
+                    key={w.name}
+                    info={w}
+                />
+            ))
+            return searchWeaponsList
+        }
+
+        const renderSearchResult = (type) => {
+            switch(type){
+                case "monsters":
+                    return getMonsters();
+                case "weapons":
+                    return getWeapons();
+                case "magicitems":
+                    return getMagicItems();
+                default:
+                    return "";
+            }
+        }
 
         return(
             <div className="search">
@@ -62,11 +104,15 @@ class SearchResults extends Component {
                         {errors.message}
                     </div>
                 )}
+
+                <div className="search-list">
+                    {renderSearchResult(searchResults.searchType)} 
+                </div>
                 
-                {searchResults[0] == ""  && (
-                    <div className="monster-no-result">No results, try searching something else</div>
+                {/* No Results */}
+                {searchResults.count === 0  && (
+                    <div className="search-no-result">No results, try searching something else</div>
                 )}
-                <div className="monster-list">{searchMonstersList} </div>
 
                 <form onSubmit ={this.handleSubmit}>
                     <input 
@@ -74,7 +120,17 @@ class SearchResults extends Component {
                         placeholder="Search for a monster..."
                         value={this.state.search}
                         onChange= {this.handleChange}
+                        name="search"
                     />
+                    <select 
+                        value={this.state.value} 
+                        name="type" 
+                        onChange={this.handleChange}
+                    >
+                        <option value="monsters">Monsters</option>
+                        <option value="weapons">Weapons</option>
+                        <option value="magicitems">Magic Items</option>
+                    </select>
 
                     <button className="search-btn" type="submit">
                         Search
