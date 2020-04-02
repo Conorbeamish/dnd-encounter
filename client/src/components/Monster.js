@@ -118,18 +118,17 @@ import "./Monster.css";
         
                 {/* If a saved monster */}
                 {removeMonster && (<div className="monster-buttons">
+                        <button className="monster-btn-delete" onClick={removeMonster}>
+                            Delete
+                        </button>
                         <button className="monster-btn" onClick={this.toggleModal}>
                             {!this.state.show && ("View")}
                             {this.state.show && ("Close")}
                         </button>
-                        <button className="monster-btn-delete" onClick={removeMonster}>
-                            Delete
-                        </button>
                     </div>
                     )
                 }
-                
-
+            
                 {/* If a searched monster */}
                 {saveItem && (
                     <button className="monster-btn" onClick={this.handleSave}>

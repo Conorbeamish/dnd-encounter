@@ -8,6 +8,9 @@
     background-color: #fefefe;
     margin-bottom: auto;
 }
+.magic-item div {
+    text-transform: capitalize;
+}
 
 .magic-item-title h3{
     margin: 0;
@@ -18,6 +21,9 @@
     margin: 0 0 1rem 0;
 }
 
+.magic-item-content div{
+    margin-bottom: 0.5rem;
+}
 
 .magic-item button{
     font-family: inherit;
@@ -25,8 +31,13 @@
     background: none;
     font-size: inherit;
     border-radius: 0.25rem;
-   }
-   
+}
+
+.magic-item-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
 .magic-item-btn{
     border: 1px solid #0505a1;
 }

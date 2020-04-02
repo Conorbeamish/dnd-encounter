@@ -9,9 +9,17 @@
     margin-bottom: auto;
 }
 
+.weapon ul{
+    padding: 0;
+}
+
+.weapon li{
+    list-style: none;
+}
+
 .weapon-title h3{
     margin: 0;
-    border-bottom: 2px solid #1a962a;
+    border-bottom: 2px solid #0f7d14;
 }
 
 .weapon-title{
@@ -27,18 +35,18 @@
    }
    
 .weapon-btn{
-    border: 1px solid #1a962a;
+    border: 1px solid #0f7d14;
 }
 
 .weapon-btn:hover{
-    background: #1a962a;
-    color: #fefefe;
+    background: #0f7d14;
+    color: #f8f8f8;
     transition: 300ms;
 }
 
 .weapon-btn:focus{
-    background: #1a962a;
-    color: #fefefe;
+    background: #0f7d14;
+    color: #f8f8f8;
     outline: none;
 }
 
