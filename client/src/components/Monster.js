@@ -42,7 +42,7 @@ import "./Monster.css";
         }
     } 
 
-    actionList = () => {
+    getActionList = () => {
         const {info} = this.props
         return(
             info.actions.map(a => (
@@ -102,7 +102,7 @@ import "./Monster.css";
                         <div>Languages: <em>{info.languages}</em></div>
 
                         <h4 className="monster-actions-title">Actions</h4>
-                        <div>{this.actionList()}</div>
+                        <div>{this.getActionList()}</div>
 
                         <h4 className="monster-actions-title">Special Abilities</h4>
                         {this.getAbilities(info.special_abilities)}

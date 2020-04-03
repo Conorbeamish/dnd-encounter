@@ -1,0 +1,40 @@
+.loot h2{
+    padding-top: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid#e40611;
+}
+
+.loot-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.loot-btn{
+    cursor: pointer;
+    color: #313639;
+    background:none;
+    border: 1px solid #313639;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+    margin: 0.25rem 0 0.25rem 0;
+    letter-spacing: 0.05rem;
+    max-width: 50%;
+    align-self: center;
+    transition: 300ms;
+}
+
+.loot-btn:hover{
+    background: #313639;
+    color: #fefefe;
+    transition: 300ms;
+}
+
+.loot-btn:focus{
+    background: #313639;
+    color: #fefefe;
+    outline: none;
+}

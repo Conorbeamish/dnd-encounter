@@ -1,15 +1,11 @@
 import {apiCall} from "../../services/api";
 import {addError} from "./errors";
-import {LOAD_ENCOUNTERS, REMOVE_ENCOUNTER, LOAD_ENCOUNTER, CLEAR_ENCOUNTER} from "../actionTypes";
+import {LOAD_ENCOUNTERS, REMOVE_ENCOUNTER, CLEAR_ENCOUNTER} from "../actionTypes";
+
 
 export const loadEncounters = encounters => ({
     type: LOAD_ENCOUNTERS,
     encounters
-});
-
-export const loadEncounter = encounter => ({
-    type: LOAD_ENCOUNTER,
-    encounter
 });
 
 export const clearEncounter = () => ({
@@ -34,18 +30,6 @@ export function fetchEncounters(userId){
         return apiCall("get", `/api/users/${userId}/encounters`)
         .then((res) => {
             dispatch(loadEncounters(res));
-        })
-        .catch(err => {
-            dispatch(addError(err.message));
-        });
-    }
-}
-
-export function fetchEncounter(userId, encounterID){
-    return dispatch => {
-        return apiCall("get", `/api/users/${userId}/encounters/${encounterID}`)
-        .then((res) => {
-            dispatch(loadEncounter(res));
         })
         .catch(err => {
             dispatch(addError(err.message));

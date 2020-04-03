@@ -27,6 +27,8 @@ class MagicItem extends Component {
         } = this.props.info;
 
         const {show} = this.state;
+
+        const {removeItem} = this.props;
         
         return  (
             <div className="magic-item">
@@ -37,7 +39,7 @@ class MagicItem extends Component {
 
                 <div className="magic-item-content">
                     <div><strong>{rarity}</strong></div>
-                    <div><em>{requires_attunement}</em></div> 
+                     
 
                     {/* Partial Description */}
                     {!show && (
@@ -48,7 +50,10 @@ class MagicItem extends Component {
 
                     {/* Show full item */}
                     {show && (
-                        <div>{desc}</div>
+                        <div>
+                            <div>{desc}</div>
+                            <div><em>{requires_attunement}</em></div>
+                        </div>
                     )}
                 </div>
                 
@@ -59,6 +64,11 @@ class MagicItem extends Component {
                         </button>
                         )
                     }
+                    {removeItem && (
+                        <button className="magic-item-btn" onClick={removeItem}>
+                            Delete
+                        </button>
+                    )}
                     <button className="magic-item-btn" onClick={this.toggleShow}>
                         {!this.state.show && ("View")}
                         {this.state.show && ("Close")}

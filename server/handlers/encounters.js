@@ -21,11 +21,17 @@ exports.createEncounter = async function(req, res, next){
 exports.getEncounter = async function(req, res, next){
     try{
         let encounter = await db.Encounter.findById(req.params.encounter_id).populate("monsters", {
-            info: true
+            info: true,
+            user: true, 
+            encounter:true
         }).populate("weapons", {
-            info: true
+            info: true,
+            user: true, 
+            encounter:true
         }).populate("magicItems", {
-            info: true
+            info: true,
+            user: true, 
+            encounter:true
         })
 
         return res.status(200).json(encounter);

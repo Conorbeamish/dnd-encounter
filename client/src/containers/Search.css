@@ -1,11 +1,13 @@
 .search{
     background-color: rgba(49, 54, 57, 0.25);
-    min-height: 30vh;
+    border-top: 2px solid #e40611;
+    border-top: 2px solid #e40611;
+    border-bottom: 2px solid #e40611;
+    margin-top: 2rem;
+    padding-bottom: 6rem;
 }
 
 .search-title{
-    border-top: 2px solid #e40611;
-    margin-top: 2rem;
     padding-top: 2rem;
 }
 
@@ -18,15 +20,30 @@
     padding: 0.5rem 0 0.5rem 0;
     position: sticky;
     bottom: 0;
+    flex-wrap: wrap;
+    background-color: rgba(49, 54, 57, 0.25);
+}
+
+.search-item{
+    border-radius: 0.25rem;
+    padding: 0.1rem;
+    background-color: #fefefe;
+    border: 1px solid #313639;
+}
+
+.search select{
+    height: 2rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-family: inherit;
+    color: #313639;
+    font-weight: bold;
+
 }
 
 .search input{
-    border-radius: 0.25rem;
-    border: none;
-    padding: 0.1rem;
-    height: 1.5rem;
-    background-color: #fefefe;
-    border: 1px solid #313639;
+    height: 1.75rem;
+    margin-left: 0.5rem;
 }
 
 .search input:hover{
@@ -45,16 +62,16 @@
     background-color: #f8f8f8;
     transition: 300ms;
     padding: 0.25rem;
-    margin-left: 1rem;
+    margin-left: 0.5em;
 }
 
 .search-btn:hover{
-    background-color:  #313939;
+    background-color:  #313639;
     color: #fefefe;
 }
 
 .search-btn:focus{
-    background-color:  #313939;
+    background-color:  #313639;
     color: #fefefe;
     outline: none;
 

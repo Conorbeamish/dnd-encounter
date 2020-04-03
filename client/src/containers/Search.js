@@ -81,7 +81,6 @@ class SearchResults extends Component {
         } = this.props;
         let searchWeaponsList = searchResults.results.map(w => (
             <Weapon
-                key={w.name}
                 info={w}
                 saveItem = {saveItem.bind(this, userID, encounterID, "weapons", {"info": w})}
                 removeError={removeError}
@@ -138,14 +137,8 @@ class SearchResults extends Component {
                 )}
 
                 <form onSubmit ={this.handleSubmit}>
-                    <input 
-                        type="text" 
-                        placeholder="Search for a monster..."
-                        value={this.state.search}
-                        onChange= {this.handleChange}
-                        name="search"
-                    />
                     <select 
+                        className="search-item"
                         value={this.state.value} 
                         name="type" 
                         onChange={this.handleChange}
@@ -154,6 +147,16 @@ class SearchResults extends Component {
                         <option value="weapons">Weapons</option>
                         <option value="magicitems">Magic Items</option>
                     </select>
+
+                    <input
+                        className="search-item" 
+                        type="text" 
+                        placeholder={`Search for ${this.state.type}...`}
+                        value={this.state.search}
+                        onChange= {this.handleChange}
+                        name="search"
+                        autoComplete="off"
+                    />
 
                     <button className="search-btn" type="submit">
                         Search

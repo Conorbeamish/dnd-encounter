@@ -2,7 +2,7 @@ import React from "react";
 import "./Weapon.css";
 
 const Weapon = props => {
-    const {info} = props
+    const {info, removeItem} = props
     const {
         name,
         category,
@@ -41,6 +41,11 @@ const Weapon = props => {
                 </button>
                 )
             }
+            {removeItem && (
+                <button className="weapon-btn" onClick={removeItem}>
+                    Delete
+                </button>
+            )}
         </div>   
     )
 }
