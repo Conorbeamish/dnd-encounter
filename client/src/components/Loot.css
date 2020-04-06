@@ -3,7 +3,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    border-top: 1px solid#e40611;
+    border-top: 2px solid#e40611;
 }
 
 .loot-list{
@@ -15,7 +15,7 @@
 .loot-btn{
     cursor: pointer;
     color: #313639;
-    background:none;
+    background: #fefefe;
     border: 1px solid #313639;
     border-radius: 0.25rem;
     padding: 0.25rem;
