@@ -2,7 +2,7 @@ import React from "react";
 import "./Weapon.css";
 
 const Weapon = props => {
-    const {info, removeItem} = props
+    const {info, removeItem, id} = props
     const {
         name,
         category,
@@ -19,7 +19,7 @@ const Weapon = props => {
 
     const getPropertyList = () => {
         let propertyList = properties.map(p => (
-            <li key={p}>{p}</li>
+            <li key={p + id}>{p}</li>
         ))
         return propertyList
     }

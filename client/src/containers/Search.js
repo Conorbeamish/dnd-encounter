@@ -81,6 +81,7 @@ class SearchResults extends Component {
         } = this.props;
         let searchWeaponsList = searchResults.results.map(w => (
             <Weapon
+                key={w.name}
                 info={w}
                 saveItem = {saveItem.bind(this, userID, encounterID, "weapons", {"info": w})}
                 removeError={removeError}
