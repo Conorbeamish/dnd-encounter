@@ -15,7 +15,6 @@ const Weapon = props => {
 
     const handleSave = async () => {
         await props.saveItem();
-        props.removeError()
     }
 
     const getPropertyList = () => {

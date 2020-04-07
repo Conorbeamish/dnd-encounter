@@ -15,7 +15,6 @@ import "./Monster.css";
 
     handleSave = async () => {
         await this.props.saveItem();
-        this.props.removeError()
     }
 
     getMovement = () => {

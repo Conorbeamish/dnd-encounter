@@ -27,14 +27,13 @@ app.use(
     correctUser,
     encountersRoutes
 );
-
 //Monsters Routes
 app.use(
     "/api/users/:id/encounters/:encounter_id/monsters",
     loginRequired,
     correctUser,
     monstersRoutes
-)
+);
 
 //Weapons Routes
 app.use(
@@ -42,7 +41,7 @@ app.use(
     loginRequired,
     correctUser,
     weaponsRoutes
-)
+);
 
 //Magic Items Routes
 app.use(
@@ -50,7 +49,7 @@ app.use(
     loginRequired,
     correctUser,
     magicItemsRoutes
-)
+);
 
 
 app.use((req, res, next) => {

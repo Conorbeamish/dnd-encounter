@@ -1,4 +1,4 @@
-import {LOAD_WEAPONS, REMOVE_WEAPON} from "../actionTypes";
+import {LOAD_WEAPONS, REMOVE_WEAPON, ADD_WEAPON} from "../actionTypes";
 
 const weapons = (state = [], action) => {
     switch (action.type) {
@@ -6,6 +6,8 @@ const weapons = (state = [], action) => {
             return [...action.weapons];
         case REMOVE_WEAPON:
             return state.filter(weapon => weapon._id !== action.id);
+        case ADD_WEAPON:
+            return[...state, action.weapon]
         default:
             return state;
     }

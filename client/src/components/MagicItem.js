@@ -10,7 +10,6 @@ class MagicItem extends Component {
     
     handleSave = async () => {
         await this.props.saveItem();
-        this.props.removeError()
     }
 
     toggleShow = () => {

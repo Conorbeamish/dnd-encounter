@@ -44,6 +44,8 @@ exports.getAllEncounters = async function(req, res, next){
     try{
         let encounters = await db.Encounter.find({user: req.params.id}).populate("monsters", {
             info: true
+        }).populate("user",{
+            _id: true
         })
         .sort({createdAt: "desc"})
         return res.status(200).json(encounters);

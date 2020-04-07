@@ -39,11 +39,11 @@
 }
     
 .homepage-link:hover{
-    color: #313639;
+    color: #e40611;
 }
 
 .homepage-link:focus{
-    color: #313639;
+    color: #e40611;
     outline: none;
 }
 

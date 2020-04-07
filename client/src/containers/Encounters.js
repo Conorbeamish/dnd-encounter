@@ -20,8 +20,8 @@ class Encounters extends Component {
                 id={e._id}
                 title={e.title}
                 date={e.createdAt}
-                user={e.user}
-                removeEncounter={removeEncounter.bind(this, e.user, e._id)}
+                user={e.user._id}
+                removeEncounter={removeEncounter.bind(this, e.user._id, e._id)}
             />
         ));
         return (
