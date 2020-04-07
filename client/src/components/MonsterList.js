@@ -6,13 +6,6 @@ import "./MonsterList.css";
 class MonsterList extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            show: true
-        }
-    }
-
-    toggleShow = () => {
-        this.setState({show: !this.state.show});
     }
 
     render(){

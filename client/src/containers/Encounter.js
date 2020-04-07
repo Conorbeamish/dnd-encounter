@@ -17,6 +17,10 @@ class Encounter extends Component {
         }
     }
 
+    toggleShow = () => {
+        this.setState({show: !this.state.show});
+    }
+
     componentDidMount(){
         const userID = this.props.match.params.id;
         const encounterID = this.props.match.params.encounter_id;
@@ -47,8 +51,9 @@ class Encounter extends Component {
 
         return(
             <div className="encounter">
-                {currentEncounter.encounter && (<h2>{currentEncounter.encounter.title}</h2>)}
+                <h2 className="encounter-main-title">{currentEncounter.encounter && (<span>{currentEncounter.encounter.title}</span>)}</h2>
 
+                {/* Show monster overview bar if there are montsers */}
                 {(monsters.length !== 0 && (
                 <div className="monster-overview">
                     <div className="monster-overview-list" style={isHidden}> {monsterOverviewList} </div>

@@ -1,8 +1,7 @@
-.loot h2{
+.loot-title{
     padding-top: 2rem;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2rem auto 0 auto;
     border-top: 2px solid#e40611;
 }
 
@@ -14,8 +13,8 @@
 
 .loot-btn{
     cursor: pointer;
-    color: #313639;
-    background: #fefefe;
+    color: #fefefe;
+    background: #313639;
     border: 1px solid #313639;
     border-radius: 0.25rem;
     padding: 0.25rem;
@@ -28,13 +27,13 @@
 }
 
 .loot-btn:hover{
-    background: #313639;
-    color: #fefefe;
+    background: #fefefe;
+    color: #313639;
     transition: 300ms;
 }
 
 .loot-btn:focus{
-    background: #313639;
-    color: #fefefe;
     outline: none;
+    background: #fefefe;
+    color: #313639;
 }

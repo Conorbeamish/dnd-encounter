@@ -105,8 +105,12 @@
 }
 
 .monster-atk-dice{
+    margin-top: 0.5rem;
     display: flex;
-    justify-content: space-between;
+}
+
+.monster-atk-dice li{
+    padding-right: 2rem;
 }
 
 @media only screen and (max-width: 768px) {

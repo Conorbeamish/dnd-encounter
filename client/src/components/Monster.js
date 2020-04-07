@@ -49,9 +49,9 @@ import "./Monster.css";
                 <ul className="monster-atk" key={a.name}>
                     <li><strong>{a.name}</strong> : <em>{a.desc}</em> </li>
                     <div className="monster-atk-dice">
-                        <li>Atk Bonus : {a.attack_bonus}</li>
-                        <li>Dmg Dice : {a.damage_dice}</li>
-                        <li>Dmg Bonus : {a.damage_bonus}</li>
+                        <li>Atk Bonus: {a.attack_bonus}</li>
+                        <li>Dmg Dice: {a.damage_dice}</li>
+                        <li>Dmg Bonus: {a.damage_bonus}</li>
                     </div>
                 </ul>
             ))
@@ -69,10 +69,15 @@ import "./Monster.css";
     }
 
     render(){
-        const {info, saveItem, removeMonster} = this.props
-    
+        const {info, saveItem, removeMonster} = this.props;
+        const {show} = this.state;
+
+        // hide and show monster
+        let isHidden
+        (!show) ? (isHidden = {}) : (isHidden = {width: "100%"});
+
         return(
-            <div className="monster">
+            <div className="monster" style={isHidden}>
                 <div className="monster-title">
                     <h3 >{info.name}</h3>
                     <div><em>{info.size} {info.type} {info.alignment}</em></div>
@@ -90,7 +95,7 @@ import "./Monster.css";
                 </ul>
 
                 {/* Full descitption */}
-                {this.state.show && (
+                {show && (
                     <div>
                         <div className="monster-saving">Saving Throws: Str({info.strength_save}) Dex({info.dexterity_save}) Con({info.constitution_save}) Int({info.intelligence_save}) Cha({info.charisma_save}) Wis({info.wisdom_save})</div>
                         <div className="monster-skill">Skills: {this.getSkills()}</div>
@@ -122,8 +127,8 @@ import "./Monster.css";
                             Delete
                         </button>
                         <button className="monster-btn" onClick={this.toggleModal}>
-                            {!this.state.show && ("View")}
-                            {this.state.show && ("Close")}
+                            {!show && ("View")}
+                            {show && ("Close")}
                         </button>
                     </div>
                     )

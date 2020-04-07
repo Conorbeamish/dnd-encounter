@@ -44,10 +44,12 @@ class Loot extends Component {
 
         return(
             <div className="loot">
-                <h2>Loot</h2>
-                <button type="button" className="loot-btn" onClick={this.toggleShow}>
+                <div className="loot-title">
+                    <button type="button" className="loot-btn" onClick={this.toggleShow}>
                     {buttonName}
-                </button>
+                    </button>
+                </div>
+                
 
                 <div style={isHidden}>
                     {/* no loot */}

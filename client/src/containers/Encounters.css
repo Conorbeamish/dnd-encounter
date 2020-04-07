@@ -3,6 +3,10 @@
     min-height: 100vh;
 }
 
+.encounters h2 {
+    color:#313639
+}
+
 .encounters-container{
     padding-top: 10vh;
     display: flex;
