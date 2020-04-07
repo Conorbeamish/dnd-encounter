@@ -79,6 +79,7 @@
 }
 .monster-btn-delete{
     border: 1px solid #e40611;
+    background: #e40611;
 }
 
 .monster-btn-delete:hover{

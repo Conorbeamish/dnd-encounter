@@ -42,7 +42,7 @@ const Weapon = props => {
                 )
             }
             {removeItem && (
-                <button className="weapon-btn" onClick={removeItem}>
+                <button className="weapon-btn-delete" onClick={removeItem}>
                     Delete
                 </button>
             )}

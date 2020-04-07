@@ -96,7 +96,7 @@ class AuthForm extends Component {
                                 onChange = {this.handleChange}
                                 type="password"
                             /> 
-                            <Link to="/reset">
+                            <Link className="reset-link" to="/reset">
                                 Reset Password
                             </Link>
                         </div>

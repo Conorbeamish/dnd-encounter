@@ -50,6 +50,23 @@
     outline: none;
 }
 
+.weapon-btn-delete{
+    border: 1px solid #e40611;
+    background: #e40611;
+}
+
+.weapon-btn-delete:hover{
+    background: #e40611;
+    color: #fefefe;
+    transition: 300ms;
+}
+
+.weapon-btn-delete:focus{
+    background: #e40611;
+    color: #fefefe;
+    outline: none;
+}
+
 @media only screen and (max-width: 768px) {
     .weapon{
         width: 90%;

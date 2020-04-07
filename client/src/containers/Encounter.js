@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchEncounter, removeItem } from "../store/actions/encounterItems";
 import { removeError } from "../store/actions/errors";
 import MonsterList from "../components/MonsterList";
+import MonsterOverview from "../components/MonsterOverview";
 import Loot from "../components/Loot";
 import Search from "./Search.js";
 import "./Encounter.css";
@@ -11,6 +12,9 @@ class Encounter extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            show: true
+        }
     }
 
     componentDidMount(){
@@ -27,9 +31,31 @@ class Encounter extends Component {
             magicItems
         } = this.props;
 
+        const {show} = this.state;
+
+        let isHidden, buttonName
+        (!show) ? (isHidden = {display: "none"}) : (isHidden = {});
+        (show) ? (buttonName = "Hide"): (buttonName="Show");
+        
+        let monsterOverviewList = monsters.map(m => (
+            <MonsterOverview
+                key={m._id}
+                info={m.info[0]}
+                id={m._id}
+            />
+        ));
+
         return(
             <div className="encounter">
                 {currentEncounter.encounter && (<h2>{currentEncounter.encounter.title}</h2>)}
+
+                {(monsters.length !== 0 && (
+                <div className="monster-overview">
+                    <div className="monster-overview-list" style={isHidden}> {monsterOverviewList} </div>
+                    {!show && (<h4>Monster Quick List</h4>)}
+                    <button className="monster-ov-btn" name="show" onClick={this.toggleShow}>{buttonName}</button>
+                 </div>
+                ))}
 
                 <MonsterList
                     monsters={monsters}

@@ -87,6 +87,18 @@
     margin-bottom: 0.5rem;
 }
 
+.reset-link{
+    text-decoration: none;
+}
+
+.reset-link:visited{
+    color: #313639;
+}
+
+.reset-link:hover{
+    color: #e40611;
+}
+
 @media only screen and (min-width: 768px) {
     .auth-form form {
         max-width: 50%;

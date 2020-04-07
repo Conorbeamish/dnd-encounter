@@ -52,7 +52,7 @@ class Loot extends Component {
                 <div style={isHidden}>
                     {/* no loot */}
                     {(magicItems.length == 0 && weapons.length ==0) && (
-                        <div>You have no loot save, add some by searching below</div>
+                        <div>You have no loot save, try searching for some below...</div>
                     )}
                     
                     {weapons.length !==0 && (<h3>Weapons</h3>)}

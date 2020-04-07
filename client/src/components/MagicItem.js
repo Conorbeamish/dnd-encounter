@@ -65,7 +65,7 @@ class MagicItem extends Component {
                         )
                     }
                     {removeItem && (
-                        <button className="magic-item-btn" onClick={removeItem}>
+                        <button className="magic-item-btn-delete" onClick={removeItem}>
                             Delete
                         </button>
                     )}
