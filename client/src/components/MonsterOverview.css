@@ -25,25 +25,51 @@
 
 }
 
+
+
+.monster-ov-btn{
+    cursor: pointer;
+    color: #313639;
+    background-color: inherit;
+    border: none;
+    padding: 0.25rem;
+    font-size: 1rem;
+    margin: 0.25rem 0 0.25rem 0;
+    letter-spacing: 0.05rem;
+    max-width: 50%;
+    align-self: center;
+    transition: 300ms;
+}
+
+.monster-ov-btn:focus{
+    outline: none;
+    color: #e40611;
+}
+
+.monster-overview h4{
+    margin: 0;
+}
+
+.monster-overview-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .roll {
     cursor: pointer;
     margin-left: 0.25rem;
     font-family: inherit;
     border-radius: 0.25rem;
-    color: #313639;
-    background:none;
+    color: #fefefe;
+    font-weight: bold;
+    background: #313639;
     border: 1px solid #313639;
     transition: 300ms;
     min-width: 2rem;
 }
 
 .roll:hover{
-    background-color: #313639;
-    color: #f8f8f8;
+    background-color: #fefefe;
+    color: #313639;
 }
 
-.roll:focus{
-    background-color: #313639;
-    color: #f8f8f8;
-    outline: none;
-}

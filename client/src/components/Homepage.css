@@ -11,7 +11,7 @@
     background-position: center center;
     background-size: cover;
     color: #f9f9f9;
-    text-shadow: 0 0 8px #66757f;
+    text-shadow: 0 0 8px #313639;
 }
 
 .homepage h1 {
@@ -45,4 +45,10 @@
 .homepage-link:focus{
     color: #313639;
     outline: none;
+}
+
+@media only screen and (max-width: 768px) {
+   .homepage h1{
+       font-size: 2.5rem;
+   }
 }

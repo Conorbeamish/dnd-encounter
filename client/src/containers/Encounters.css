@@ -4,11 +4,28 @@
 }
 
 .encounters h2 {
-    color:#313639
+    color:#f8f8f8;
+    text-shadow: 0 0 8px #313639;
+    font-size: 3rem;
+    overflow: hidden;
 }
 
-.encounters-container{
+
+.encounters-jumbotron{
+    min-height: 33vh;
     padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../images/encounter-jumbotron2.jpg);
+    background-position: center top;
+    background-size: cover;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #313639;
+}
+
+
+.encounters-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,5 +33,16 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-   
 }
+
+@media only screen and (max-width: 768px) {
+    .encounters-container{
+        width: 100%;
+    }
+    .encounters h3{
+        font-size: 1rem;
+    }
+    .encounters h2{
+        font-size: 2rem;
+    }
+} 

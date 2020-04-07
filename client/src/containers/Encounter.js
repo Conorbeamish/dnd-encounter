@@ -51,7 +51,12 @@ class Encounter extends Component {
 
         return(
             <div className="encounter">
-                <h2 className="encounter-main-title">{currentEncounter.encounter && (<span>{currentEncounter.encounter.title}</span>)}</h2>
+                <div className="encounter-jumbotron">
+                    <h2 className="encounter-main-title">
+                        {currentEncounter.encounter && 
+                    (<span>{currentEncounter.encounter.title}</span>)}
+                    </h2>
+                </div>
 
                 {/* Show monster overview bar if there are montsers */}
                 {(monsters.length !== 0 && (

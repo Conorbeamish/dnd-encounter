@@ -32,8 +32,3 @@
     transition: 300ms;
 }
 
-.loot-btn:focus{
-    outline: none;
-    background: #fefefe;
-    color: #313639;
-}
