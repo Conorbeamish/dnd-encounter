@@ -26,7 +26,7 @@ class MonsterOverview extends Component{
     render(){
         const {hp, roll} = this.state
         const {name} = this.props.info
-        const pipe = (<span style={{color: "#e40611"}}> | </span>)
+        const pipe = (<span style={{color: "#e40611", fontWeight: "bold"}}> | </span>)
         let isDead
         (hp === "0") ? (isDead = {backgroundColor: "rgba(49, 54, 57, 0.75)"}) : (isDead= {});
         
