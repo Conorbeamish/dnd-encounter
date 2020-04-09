@@ -3,13 +3,27 @@ import { connect } from "react-redux";
 import {fetchEncounters, removeEncounter} from "../store/actions/encounters";
 import EncounterTitle from "../components/EncounterTitle";
 import NewEncounter from "../containers/NewEncounter";
+import Loader from "../components/Loader";
 import "./Encounters.css";
 
 class Encounters extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            loading: true
+        }
+    }
+
+    loadEncounters = async () => {
+        const userId = this.props.currentUser.user.id;
+        await this.props.fetchEncounters(userId)
+        this.setState({
+            loading: false
+        })
+    }
 
     componentDidMount(){
-        const userId = this.props.currentUser.user.id;
-        this.props.fetchEncounters(userId);
+        this.loadEncounters()
     }
 
     render(){
@@ -31,13 +45,20 @@ class Encounters extends Component {
                         My Encounters
                     </h2>
                 </div>
-                <div className="encounters-container">
+
+                {!this.state.loading && (
+                    <div className="encounters-container">
                     <NewEncounter className="new-encounter"
                         history={this.props.history}
                     />
                     {encounterList.length === 0 && (<div>You have no encounters, enter a name for a new encounter above</div>)}
                     {encounterList}
-                </div>
+                    </div>
+                )}
+
+                {this.state.loading && (
+                    <Loader/>
+                )}
             </div>
         )
     }

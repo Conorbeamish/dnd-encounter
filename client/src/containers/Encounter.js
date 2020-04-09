@@ -6,6 +6,7 @@ import MonsterList from "../components/MonsterList";
 import MonsterOverview from "../components/MonsterOverview";
 import Loot from "../components/Loot";
 import Search from "./Search.js";
+import Loader from "../components/Loader";
 import "./Encounter.css";
 
 class Encounter extends Component {
@@ -13,7 +14,8 @@ class Encounter extends Component {
     constructor(props){
         super(props);
         this.state = {
-            show: true
+            show: true,
+            loading: true,
         }
     }
 
@@ -21,10 +23,17 @@ class Encounter extends Component {
         this.setState({show: !this.state.show});
     }
 
-    componentDidMount(){
+    loadEncounter = async () => {
         const userID = this.props.match.params.id;
         const encounterID = this.props.match.params.encounter_id;
-        this.props.fetchEncounter(userID, encounterID);
+        await this.props.fetchEncounter(userID, encounterID);
+        this.setState({
+            loading : false
+        })
+    }
+
+    componentDidMount(){
+        this.loadEncounter()
     }
 
     render(){
@@ -58,33 +67,39 @@ class Encounter extends Component {
                     </h2>
                 </div>
 
-                {/* Show monster overview bar if there are montsers */}
-                {(monsters.length !== 0 && (
-                <div className="monster-overview">
-                    <div className="monster-overview-list" style={isHidden}> {monsterOverviewList} </div>
-                    {!show && (<h4>Monster Quick List</h4>)}
-                    <button className="monster-ov-btn" name="show" onClick={this.toggleShow}>{buttonName}</button>
-                 </div>
-                ))}
+                {this.state.loading?  (
+                    <Loader/>
+                ) : (
+                    <div>
+                        {/* Show monster overview bar if there are montsers */}
+                        {(monsters.length !== 0 && (
+                        <div className="monster-overview">
+                            <div className="monster-overview-list" style={isHidden}> {monsterOverviewList} </div>
+                            {!show && (<h4>Monster Quick List</h4>)}
+                            <button className="monster-ov-btn" name="show" onClick={this.toggleShow}>{buttonName}</button>
+                        </div>
+                        ))}
 
-                <MonsterList
-                    monsters={monsters}
-                    removeItem={removeItem}
-                />
+                        <MonsterList
+                            monsters={monsters}
+                            removeItem={removeItem}
+                        />
 
-                <Loot
-                    weapons={weapons}
-                    magicItems={magicItems}
-                    removeItem={removeItem}
-                />
+                        <Loot
+                            weapons={weapons}
+                            magicItems={magicItems}
+                            removeItem={removeItem}
+                        />
 
-                <Search
-                    userID = {this.props.match.params.id}
-                    encounterID = {this.props.match.params.encounter_id}
-                    removeError = {this.props.removeError}
-                    history = {this.props.history}
-                    
-                />
+                        <Search
+                            userID = {this.props.match.params.id}
+                            encounterID = {this.props.match.params.encounter_id}
+                            removeError = {this.props.removeError}
+                            history = {this.props.history}
+                            
+                        />
+                    </div>
+                )}
             </div>
         )
     }

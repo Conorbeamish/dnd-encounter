@@ -5,6 +5,7 @@ import { saveItem } from "../store/actions/encounterItems"
 import Monster from "../components/Monster";
 import Weapon from "../components/Weapon";
 import MagicItem from "../components/MagicItem";
+import Loader from "../components/Loader";
 import "./Search.css";
 
 class SearchResults extends Component {
@@ -14,7 +15,8 @@ class SearchResults extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             search: "",
-            type: "monsters"
+            type: "monsters",
+            loading: false
         };
     }
 
@@ -24,10 +26,20 @@ class SearchResults extends Component {
         })
     }
 
-    handleSubmit(e){
+    loadSearchResults = async () => {
         const {search, type} = this.state
+        await this.props.fetchSearchResults(search, type);
+        this.setState({
+            loading: false
+        })
+    }
+
+    handleSubmit(e){
         e.preventDefault();
-        this.props.fetchSearchResults(search, type);
+        this.setState({
+            loading: true
+        })
+        this.loadSearchResults()
     }
 
     getMonsters = () => {
@@ -128,9 +140,13 @@ class SearchResults extends Component {
                     </div>
                 )}
 
-                <div className="search-list">
-                    {this.renderSearchResult(searchResults.searchType)} 
-                </div>
+                {this.state.loading ? (
+                    <Loader />
+                ) : (
+                    <div className="search-list">
+                        {this.renderSearchResult(searchResults.searchType)} 
+                    </div> 
+                )}
                 
                 {/* No Results */}
                 {searchResults.count === 0  && (
