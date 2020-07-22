@@ -17,10 +17,6 @@ Users must supply an email and are authorized using Jason Web Token.
 ## Future Updates
 ==============================
 
-Add roll feature for monsters
-
-Add damage for monsters
-
 Add initiative for turn determination
 
 # Authors
