@@ -4,7 +4,11 @@
   "description": "Backend server for Dnd-Encounter",
   "main": "index.js",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.0.1",
+=======
+    "bcrypt": "^5.0.0",
+>>>>>>> 8ce4412dabf5c8a03f38bd23ef21627fcb29858c
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
